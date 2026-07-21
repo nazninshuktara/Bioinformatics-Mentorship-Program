@@ -1,0 +1,6 @@
+---
+title: "learning_guide"
+output: html_document
+---
+
+# Day 1 — Bioinformatics Workflow Setup: Building Your Computational Foundation
