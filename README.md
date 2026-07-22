@@ -28,20 +28,20 @@ As I progress through the sessions, the scripts and markdown notes will be organ
 ## 📅 12-Week Interactive Roadmap & Progress Tracker
 
 ### 🧬 Phase 1: Computational Foundation, Basic Unix commands & Programming Fundamentals
-| Week | Session Topic | Tools | Status |
+| Week | Session Topic | Tools | Learning Guide |
 | :---: | :--- | :---: | :---: |
-| **Week 1** | Bioinformatics Workflow Setup & CLI Tools for Omics Data Science | Conda / Linux | ✅ Completed |
+| **Week 1** | Bioinformatics Workflow Setup & CLI Tools for Omics Data Science | Conda / Linux | [Day1](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_1/learning_guide.md)|
 | **Week 2** | Introduction to Programming in Bioinformatics: Python & R Fundamentals | Python / R | ✅ Completed |
 
 ### 📊 Phase 2: Basic to Advanced Bulk RNA-Seq Analytics
-| Week | Session Topic | Tools | Status |
+| Week | Session Topic | Tools | Notes / Guide |
 | :---: | :--- | :---: | :---: |
 | **Week 3** | Bulk RNA-Seq Intro & Analysis: From Fastq to Counts Matrix | Bash + R | ✅ Completed |
 | **Week 4** | Count Table to Differential Gene Expression (DGE) & Pathway Analysis | DESeq2 / clusterProfiler | ⏳ Next Up |
 | **Week 5** | Batch Effects and Meta-Analysis using Public GEO Datasets | ComBat-Seq / MetaVolcano | ⏳ Pending |
 
 ### 🧫 Phase 3: Single-Cell & Spatial Transcriptomics
-| Week | Session Topic | Tools | Status |
+| Week | Session Topic | Tools | Notes / Guide |
 | :---: | :--- | :---: | :---: |
 | **Week 6** | Intro to Single Cell Transcriptomics & Processing (FASTQ to Count Matrix) | CellRanger | ⏳ Pending |
 | **Week 7** | Single-Cell Analysis: Quality Control, Filtering, Integration & Clustering | Seurat | ⏳ Pending |
@@ -49,7 +49,7 @@ As I progress through the sessions, the scripts and markdown notes will be organ
 | **Week 9** | Harmonized Public Single-Cell Data & Spatial Transcriptomics QC | Seurat | ⏳ Pending |
 
 ### 🤖 Phase 4: Deep Learning for Life Sciences & Wrap-up
-| Week | Session Topic | Tools | Status |
+| Week | Session Topic | Tools | Notes / Guide |
 | :---: | :--- | :---: | :---: |
 | **Week 10**| Spatial Transcriptomics Markers & Deep Learning Foundations | Seurat / PyTorch | ⏳ Pending |
 | **Week 11**| Deep Learning: Single-Cell Genomics Applications & Drug Discovery | PyTorch | ⏳ Pending |
