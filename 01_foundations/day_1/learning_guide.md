@@ -13,7 +13,7 @@ By completing this session, I am able to:
 - [5] Master basic Git commands and GitHub repository pushing
 ---
 
-## 🔍 Prerequisites (My System Requirements)
+## 🔍 Prerequisites (System Requirements)
 - **A Windows 10 or Windows 11 PC** with administrator rights and internet access.
 - **~10 GB free disk** and the patience to reboot once.
 - **System Verification:** Open **PowerShell** to verify Windows build compatibility with WSL2:
@@ -119,7 +119,7 @@ Laptop vs HPC, at a glance:
 - **Big storage** — datasets are hundreds of GB to TB; clusters have the room.
 - **Runs unattended** — submit a job, log off, collect results later.
 
-**How I access an HPC:** I do not sit in front of the physical hardware. Instead, I connect **remotely from my laptop using SSH**. Because the HPC runs Linux, the exact same commands and tools I learn on my local WSL2 setup apply directly to the remote cluster.
+**How can I access an HPC:** I do not sit in front of the physical hardware. Instead, I connect **remotely from my laptop using SSH**. Because the HPC runs Linux, the exact same commands and tools I learn on my local WSL2 setup apply directly to the remote cluster.
 ---
 
 ### 🛠️ Putting it together — the two Linuxes
