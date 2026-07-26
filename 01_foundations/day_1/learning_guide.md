@@ -156,6 +156,7 @@ Default Version: 2
 ✅ **Checkpoint:** an admin PowerShell window is open and responds.
 
 ## 🐙 Step-by-step walkthrough
+
 ### 💡 Step 1 — Install Windows Subsystem for Linux (WSL2 + Ubuntu)
 **What & why:** This installs a native Ubuntu Linux environment inside Windows, serving as my primary command-line terminal for the entire program.
 In the **administrator PowerShell**, run:
