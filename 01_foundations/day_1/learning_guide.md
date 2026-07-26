@@ -1,11 +1,10 @@
 # 🧬 Day 1 — Bioinformatics Workflow Setup: Building Your Computational Foundation
 
 > **Week 1, Day 1** · Friday, July 3, 2026  
-> **Author:** Naznin  
+> **Author:** Md. Jubayer Hossain
 ---
 
 ## 🎯 Learning Checklist
-By completing this session, I am able to:
 - [1] Set up Linux subsystem (WSL2) & MobaXterm
 - [2] Configure Conda, Bioconda, Pixi, and uv package managers
 - [3] Set up VS Code and RStudio for reproducible coding
