@@ -1,25 +1,21 @@
-# Day 2 — Command Line: Basic Unix + NGS Data Formats
+# 🧬 Day 2 — Command Line: Basic Unix + NGS Data Formats
 
 > **Week 1, Day 2** · **Saturday, July 4, 2026**
 > **Author:** Md. Jubayer Hossain
 
 ---
 
-## 1. Learning objectives
+## 🎯 Learning Checklist
+- [1] Navigate the Linux filesystem with `pwd`, `ls`, and `cd`, and describe an **absolute vs relative path**.
+- [2] Match many files at once with **wildcards / globbing** (`*`, `?`, `[]`, `{}`).
+- [3] Create, copy, move, rename, and remove files and folders (`mkdir`, `touch`, `cp`, `mv`, `rm`, `rmdir`).
+- [4] Inspect text files with `cat`, `more`, `less`, `head`, `tail`, and count with `wc`.
+- [5] Chain commands with **pipes** (`|`) and route the **standard streams** with `<`, `>`, `>>`.
+- [6] Filter, cut, sort, de-duplicate, and compare content with `grep`, `cut`, `sort`, `uniq`, `diff`, `comm`.
+- [7] Compress and archive data with `gzip`/`gunzip`, `bzip2`/`bunzip2`, and `tar`.
+- [8] Read and recognise the two most common raw NGS formats — **FASTA** and **FASTQ** — and count sequences/reads from the command line.
 
-By the end of this session you will be able to:
-
-- Navigate the Linux filesystem with `pwd`, `ls`, and `cd`, and describe an **absolute vs relative path**.
-- Match many files at once with **wildcards / globbing** (`*`, `?`, `[]`, `{}`).
-- Create, copy, move, rename, and remove files and folders (`mkdir`, `touch`, `cp`, `mv`, `rm`, `rmdir`).
-- Inspect text files with `cat`, `more`, `less`, `head`, `tail`, and count with `wc`.
-- Chain commands with **pipes** (`|`) and route the **standard streams** with `<`, `>`, `>>`.
-- Filter, cut, sort, de-duplicate, and compare content with `grep`, `cut`, `sort`, `uniq`, `diff`, `comm`.
-- Compress and archive data with `gzip`/`gunzip`, `bzip2`/`bunzip2`, and `tar`.
-- Read and recognise the two most common raw NGS formats — **FASTA** and **FASTQ** — and count sequences/reads from the command line.
-
-## 2. Prerequisites
-
+## 🔍 Prerequisites (System Requirements)
 - **Prior sessions:** Day 1 (WSL2 + Ubuntu terminal, conda, git). You need a working **bash** prompt.
 - **Tools installed:** only the coreutils that ship with Ubuntu (`ls`, `grep`, `cut`, `sort`, `uniq`, `wc`, `diff`, `comm`, `gzip`, `tar`). No conda env needed today.
 - **Self-check** — open your WSL Ubuntu terminal; if this prints a bash version you are ready:
@@ -34,15 +30,15 @@ Expected:
 GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)
 ```
 
-## 3. Why this matters
+## ⚠️ 1. Why this matters?
 
 Every bioinformatics pipeline starts as **plain text files** — a genome is text, sequencing reads are text, gene annotations are text. Before you run a single specialised tool (aligner, variant caller, RNA-seq quantifier), you need to *look* at those files, check they are not corrupt, count how many reads you got, pull out the columns you care about, and compress them for storage. The Unix command line does all of this in seconds on files too big to open in Excel. A 431 MB FASTQ file of 1.25 million reads (you will use exactly that today) cannot be double-clicked open — but `head`, `wc`, and `grep` handle it instantly. Master these ~20 commands and you can drive any published Linux pipeline.
 
-## 4. Concept primer
+## 🧠 2. Concept primer
 
 Read this before touching a command. Everything today builds on these ideas. Today's dataset is a **toy "Plants" collection** — genomes, gene annotations, and sample lists for toy *apple*, *pear*, and *peach* — small enough to reason about, real enough to behave like genomic data.
 
-### 4.1 The shell, commands, and arguments
+### 2.1 The shell, commands, and arguments
 
 The **shell** (bash) is the program that reads what you type and runs it. You type a **command**, optionally followed by **options** (flags, like `-l`) and **arguments** (what to act on, like a filename):
 
@@ -57,7 +53,7 @@ The **shell** (bash) is the program that reads what you type and runs it. You ty
 
 Press **Enter** to run. The shell prints output, then shows a new **prompt** (ending in `$`) waiting for the next command.
 
-### 4.2 The filesystem is a tree
+### 2.2 The filesystem is a tree
 
 Linux organises everything into one upside-down tree of **directories** (folders) starting at the **root**, written `/`. Your personal folder is your **home**, written `~` (e.g. `/home/<username>`).
 
@@ -76,7 +72,7 @@ flowchart TB
 - **Relative path** — from where you currently are: if you are in `day2`, then `data/months` points to the same file.
 - `.` means "here" (current directory); `..` means "one level up".
 
-### 4.3 Wildcards (globbing)
+### 2.3 Wildcards (globbing)
 
 The shell expands special characters into **lists of matching filenames** *before* the command runs. This is called **globbing**:
 
@@ -89,7 +85,7 @@ The shell expands special characters into **lists of matching filenames** *befor
 
 Globbing works with **any** command (`ls *.genes`, `wc -l *.samples`, `rm *.tmp`), which is why one command can act on hundreds of files.
 
-### 4.4 Streams, pipes, and redirection
+### 2.4 Streams, pipes, and redirection
 
 Every command reads an input stream and writes two output streams:
 
@@ -114,7 +110,7 @@ flowchart LR
 
 This "small tools, glued together" philosophy is why Unix dominates bioinformatics.
 
-### 4.5 NGS data formats: FASTA and FASTQ
+### 2.5 NGS data formats: FASTA and FASTQ
 
 A **sequencing run** produces text files. The two you meet first:
 
@@ -148,7 +144,7 @@ flowchart LR
 
 > Later Linux days add more formats — **BED/GFF/GTF** (features, Day 3), **SAM/BAM** (alignments, Day 4), **VCF** (variants, Day 4). Today is FASTA + FASTQ only.
 
-## 5. Setup check
+## 🎯 3. Setup check
 
 Get the Day-2 data onto your machine and move into it. If you cloned the course repo in Day 1, it is already at `~/bmp/day2/data`; otherwise copy the `day2/data` folder there. Then:
 
@@ -168,13 +164,13 @@ apple.genes       headers.txt    months       peach.samples  sample1_R1.fastq.gz
 
 ✅ **Checkpoint:** `ls` lists the data files, including `months`, `apple.genes`, `den2.fasta`, and `demo.fastq`.
 
-## 6. Step-by-step walkthrough
+## 🐙 4. Step-by-step walkthrough
 
 Run every command yourself. Each step is: what + why → command → expected output → ✅ checkpoint.
 
 > **Section titles follow the reference lectures.** This walkthrough mirrors the *Command Line Tools for Genomic Data Science* slide decks (L. Florea) shipped in `reference/` (`Mod1Lec2`–`Mod1Lec10`). Each step keeps the lecture's exact title so you can move between slides and hands-on practice without losing your place.
 
-### Step 1 — Content representation (Unix): files, directories, and paths
+### 💡Step 1 — Content representation (Unix): files, directories, and paths
 
 > *Reference: `Mod1Lec2` · commands `/` · `cd` · `pwd` · `ls`* — how Unix arranges everything as one directory tree, and how you find out where you are and move around it.
 
@@ -253,7 +249,7 @@ data
 
 ---
 
-### Step 2 — Content representation (Unix): regular expressions (file-naming patterns)
+### 💡Step 2 — Content representation (Unix): regular expressions (file-naming patterns)
 
 > *Reference: `Mod1Lec3` · patterns `*` · `?` · `[]` · `{}`* — match a whole group of files with one pattern instead of naming them one by one.
 
@@ -291,7 +287,7 @@ apple.samples  den2.fasta  den3.fasta  peach.samples  pear.samples
 
 ---
 
-### Step 3 — Content creation and removal
+### 💡Step 3 — Content creation and removal
 
 > *Reference: `Mod1Lec4` · commands `mkdir` · `cp` · `mv` · `rm` · `rmdir`* — build the folders your project lives in, then copy, rename, and clean up.
 
@@ -332,7 +328,7 @@ day2-notes.txt
 
 ---
 
-### Step 4 — Accessing content (1): paging through files
+### 💡Step 4 — Accessing content (1): paging through files
 
 > *Reference: `Mod1Lec5` · commands `more` · `less`* — scroll through a file that is far too big to dump on screen.
 
@@ -347,7 +343,7 @@ more months
 
 ---
 
-### Step 5 — Accessing content (2): peek and count
+### 💡Step 5 — Accessing content (2): peek and count
 
 > *Reference: `Mod1Lec6` · commands `head` · `tail` · `wc` · `cat`* — read the top or bottom of a file and count what's inside.
 
@@ -428,7 +424,7 @@ wc -l *.samples
 
 ---
 
-### Step 6 — Redirecting content: the standard streams
+### 💡Step 6 — Redirecting content: the standard streams
 
 > *Reference: `Mod1Lec7` · streams `stdin` · `stdout` · `stderr` · operators `<` · `>` · `|`* — route data between commands and files instead of only to the screen.
 
@@ -512,7 +508,7 @@ ls: cannot access 'nope.txt': No such file or directory
 
 ---
 
-### Step 7 — Querying content
+### 💡Step 7 — Querying content
 
 > *Reference: `Mod1Lec8` · commands `sort` · `uniq` · `cut` · `grep`* — slice out columns, order lines, count categories, and search for patterns: the workhorses of table crunching.
 
@@ -608,7 +604,7 @@ So `den2.fasta` contains **1 sequence**. Useful `grep` flags: `-i` (ignore case)
 
 ---
 
-### Step 8 — Comparing content (`diff`, `comm`)
+### 💡Step 8 — Comparing content (`diff`, `comm`)
 
 > *Reference: `Mod1Lec9` · commands `diff` · `comm`* — find what two lists share and where they differ.
 
@@ -652,7 +648,7 @@ diff <(sort apple.samples) <(sort pear.samples)
 
 ---
 
-### Step 9 — Archiving content (`gzip`, `gunzip`, `bzip2`, `bunzip2`, `tar`)
+### 💡Step 9 — Archiving content (`gzip`, `gunzip`, `bzip2`, `bunzip2`, `tar`)
 
 > *Reference: `Mod1Lec10` · commands `gzip` · `gunzip` · `bzip2` · `bunzip2` · `tar`* — compress single files and bundle many into one archive.
 
@@ -702,7 +698,7 @@ rm months.copy samples.tar.gz
 
 ---
 
-### Step 10 — Reading real NGS files: FASTA and FASTQ
+### 💡Step 10 — Reading real NGS files: FASTA and FASTQ
 
 > *Day-2 extension (applies the commands above to real sequence data — beyond Florea's `Mod1` lecture set).*
 
@@ -774,7 +770,7 @@ zcat sample1_R1.fastq.gz | head -n 4
 
 ---
 
-### Step 11 — Getting help (`man`, `--help`)
+### 💡Step 11 — Getting help (`man`, `--help`)
 
 > *Essential Unix habit — every command documents itself, so you never memorise flags.*
 
@@ -789,7 +785,7 @@ wc --help       # quick flag summary
 
 ✅ **Checkpoint:** `man wc` opens a manual page and **q** returns you to the prompt.
 
-## 7. Common errors & troubleshooting
+## Common errors & troubleshooting
 
 | Error message | Cause | Fix |
 |---------------|-------|-----|
@@ -807,17 +803,7 @@ wc --help       # quick flag summary
 | `Permission denied` writing a file | Writing to a folder you don't own | Write into your home/project folder; check with `ls -l`. |
 
 
-## 8. Recap / key takeaways
-
-- The shell = **command + options + arguments**; the filesystem is a **tree** with `/` at the root and `~` as home; paths are **absolute** or **relative** (`data/months`, `..`).
-- **Wildcards** (`* ? [] {}`) make one command act on many files.
-- View text with `more`/`less`/`head`/`tail` (never `cat` huge files); **count** with `wc -l`.
-- **Streams**: pipe `|` chains commands; `>` overwrites, `>>` appends, `<` feeds stdin, `2>` catches errors.
-- `grep` filters, `cut` pulls columns, `sort | uniq -c` counts categories, `diff`/`comm` compare lists.
-- **Compress/archive**: `gzip`/`gunzip`, `bzip2`, and `tar -czf`/`-xzf`/`-tzf`.
-- **FASTA** = `>` header + sequence (count with `grep -c "^>"`). **FASTQ** = 4 lines per read (count with `wc -l ÷ 4`).
-
-## 9. Glossary
+## 📄 Glossary
 
 | Term | Meaning |
 |------|---------|
@@ -851,7 +837,7 @@ wc --help       # quick flag summary
 | quality score | Per-base confidence character on FASTQ line 4. |
 | `man` / `--help` | Built-in manual / quick flag summary for a command. |
 
-## 10. Further reading
+## ✍️ Further reading
 
 - The Unix shell (Software Carpentry) — https://swcarpentry.github.io/shell-novice/
 - Command Line Tools for Genomic Data Science (JHU / Florea, Coursera) — the source of today's toy-Plants dataset
