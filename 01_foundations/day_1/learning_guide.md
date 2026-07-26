@@ -23,8 +23,8 @@ winver
 > ⚠️ Required version: Version 2004 (build 19041) or higher. Anything from 2021 onward is fine.
 ---
 
-## 🧠 Fundamental Concepts
-### 🐧 What is Linux?
+## 🧠 1. Fundamental Concepts
+### 🐧 1.1 What is Linux?
 Linux is a **free & open-source operating system (OS)** that manages hardware, memory, and file access. Unlike Windows or macOS, most operations in Linux are driven through text-based commands.
 
 Think of the operating system as the ground floor everything else stands on:
@@ -51,7 +51,7 @@ Two ways to give an OS instructions:
 | **What papers publish** | Methods sections list Linux commands. I can reproduce published pipelines directly. |
 ---
 
-### 💻 What is WSL? Why WSL?
+### 💻 1.2 What is WSL? Why WSL?
 Bioinformatics requires Linux, but my laptop runs **Windows**. I have three ways to get Linux onto my Windows PC:
 
 ```mermaid
@@ -84,7 +84,7 @@ flowchart TB
 So: **WSL2 = My personal Linux, living inside Windows.** This is my *local* Linux for everyday work.
 ---
 
-### 🚀 What is HPC? Why HPC?
+### 🚀 1.3 What is HPC? Why HPC?
 My laptop is fine for learning, but real datasets are **big** — aligning a human genome can need 32+ GB of RAM and many CPU cores, running for hours. A laptop chokes. Enter **HPC**.
 **HPC = High-Performance Computing.** An HPC **cluster** is a large collection of powerful computers ("nodes") wired together in a data center, sharing huge storage — designed to run heavy jobs fast, for many users at once.
 
@@ -139,7 +139,7 @@ flowchart TB
 Same commands, same tools, two places to run them.
 ---
 
-## 🎯 Setup check
+## 🎯 2. Setup check
 Only need Windows + internet to start. Confirm internet and admin PowerShell:
 
 Open **Start → type "PowerShell" → right-click → Run as administrator**. Then:
@@ -155,9 +155,9 @@ Default Version: 2
 ```
 ✅ **Checkpoint:** an admin PowerShell window is open and responds.
 
-## 🐙 Step-by-step walkthrough
+## 🐙 3. Step-by-step walkthrough
 
-### 💡 Step 1 — Install Windows Subsystem for Linux (WSL2 + Ubuntu)
+### 💡Step 1 — Install Windows Subsystem for Linux (WSL2 + Ubuntu)
 **What & why:** This installs a native Ubuntu Linux environment inside Windows, serving as my primary command-line terminal for the entire program.
 In the **administrator PowerShell**, run:
 
@@ -826,7 +826,7 @@ git clone git@github.com:<owner>/<repo>.git
 ✅ **Checkpoint:** refresh GitHub repo page in the browser — my `README.md` and commit message appear online.
 ---
 
-## ❓ Common errors & troubleshooting
+## Common errors & troubleshooting
 
 | Error message | Cause | Fix |
 |---------------|-------|-----|
