@@ -31,7 +31,7 @@ As I progress through the sessions, the scripts and markdown notes will be organ
 | Week | Session Topic | Tools | Learning Guide |
 | :---: | :--- | :---: | :---: |
 | **Week 1** | Bioinformatics Workflow Setup & CLI Tools for Omics Data Science | Conda / Linux | [Day1](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_1/learning_guide.md), [Day2](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_2/learning_guide.md)|
-| **Week 2** | Introduction to Programming in Bioinformatics: Python & R Fundamentals | Python / R | ✅ Completed |
+| **Week 2** | Introduction to Programming in Bioinformatics: Python & R Fundamentals | Python / R |[Day3](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/learning_guide.md)
 
 ### 📊 Phase 2: Basic to Advanced Bulk RNA-Seq Analytics
 | Week | Session Topic | Tools | Notes / Guide |
