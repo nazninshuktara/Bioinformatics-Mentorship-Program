@@ -14,7 +14,7 @@
 - [7] Bioinformatics Basics: Can import key libraries (`pandas, Bio`) and inspect data using `.head()` and `.tail()`.
 ---
 
-## 🎯 Setup check-Jupyter Lab
+## 🎯 Setup check-Jupyter Lab & Environment Verification
 ### 💡 What is JupyterLab?
 JupyterLab is an interactive, web-based development environment (IDE) used by data scientists, bioinformaticians, and developers to write code, run experiments, and analyze data in real time.
 
@@ -33,23 +33,38 @@ JupyterLab is an interactive, web-based development environment (IDE) used by da
 
 ### 💡Step 1 — Install Jupyter-Lab
 
-1. Installation
-
 ```
 wsl conda install jupyter-lab
 ```
 
-2. Verify Your Installation
+### 💡Step 2 - Verify Your Installation
 
 ```
 wsl jupyter-lab --version
 ```
-3. Launch JupyterLab
-To open the interface in your browser:
+### 💡Step 3 - Launch JupyterLab
+To launch the interactive environment in your default web browser:
 
 ```
 wsl jupyter-lab
 ```
+- *Note:* If the browser does not open automatically, copy the URL containing http://localhost:8888/lab?token=... from your terminal output and paste it into your browser.
 
+## 📚 4. Interactive Practice Notebooks
+Complete the hands-on exercises in the following notebooks in sequential order:
 
+- [Notebook 1: Markdown, Variables & Basic data Types](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python1.ipynb)
 
+- [Notebook 2: Python Data Structures (List, Tuple, Dict, Set)](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python2.ipynb)
+
+Notebook 3: Control Flow & Custom Functions
+
+Notebook 4: Pandas & Biopython Basics
+
+## 🔗 Recommended Resources & Documentation
+
+Python 3 Documentation
+
+Biopython Tutorial and Cookbook
+
+Pandas Getting Started Guide
