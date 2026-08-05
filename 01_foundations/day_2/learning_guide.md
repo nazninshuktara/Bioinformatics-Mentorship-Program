@@ -1,8 +1,7 @@
 # 🧬 Day 2 — Command Line: Basic Unix + NGS Data Formats
 
-> **Week 1, Day 2** · **Saturday, July 4, 2026**
+> **Week 1, Day 2** · Saturday, July 4, 2026  
 > **Author:** Md. Jubayer Hossain
-
 ---
 
 ## 🎯 Learning Checklist
