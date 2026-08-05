@@ -57,7 +57,7 @@ Complete the hands-on exercises in the following notebooks in sequential order:
 
 - [Notebook 2: Python Data Structures (List, Tuple, Dict, Set)](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python2.ipynb)
 
-Notebook 3: Control Flow & Custom Functions
+- [Notebook 3: Control Flow & Custom Functions](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python3.ipynb)
 
 Notebook 4: Pandas & Biopython Basics
 
