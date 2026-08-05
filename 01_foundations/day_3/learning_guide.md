@@ -59,12 +59,6 @@ Complete the hands-on exercises in the following notebooks in sequential order:
 
 - [Notebook 3: Control Flow & Custom Functions](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python3.ipynb)
 
-Notebook 4: Pandas & Biopython Basics
+- [Notebook 4: Pandas & Biopython Basics](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python4.ipynb)
 
-## 🔗 4. Recommended Resources & Documentation
 
-Python 3 Documentation
-
-Biopython Tutorial and Cookbook
-
-Pandas Getting Started Guide
