@@ -61,4 +61,14 @@ Complete the hands-on exercises in the following notebooks in sequential order:
 
 - [Data Exploration and Error Handling](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python4.ipynb)
 
+🔗 Recommended Resources
+- [Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet)
+- [Biopython](https://biopython.org/)
+- [RDKit: Open-Source Cheminformatics Software](https://www.rdkit.org/)
+- [DeepChem](https://deepchem.io/)
+- [scverse](https://scverse.org/)
+- [PyTorch](https://pytorch.org/)
+- [scikit-Image processing in Python](https://scikit-image.org/)
+- [scikit-learn Machine Learning in Python](https://scikit-learn.org/stable/)
 
