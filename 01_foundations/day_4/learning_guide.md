@@ -61,10 +61,25 @@ BiocManager::install("Biostrings")
 ## 📚 3. Interactive Practice Notebooks
 Complete the hands-on exercises in the following scripts/notebooks in sequential order:
 
-- [Notebook 1: R Basics, Vectors, Matrices & Factors](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python1.ipynb)
+- [Notebook 1: R Basics, Vectors, Matrices & Factors](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/01_Basics.R)
 
-- [Notebook 2: Data Frames, Conditional operatins & Custom Functions](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python2.ipynb)
+- [Notebook 2: Data Frames, Conditional operatins & Custom Functions](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/02_Conditional_Operations.R)
 
-- [Notebook 3: Data Exploration & Plotting with Tidyverse](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python3.ipynb)
+- [Notebook 3: Data Exploration & Plotting with Tidyverse](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/03_Data_Exploration.R)
 
-- [Notebook 4: DESeq2 Analysis]()
+- [Notebook 4: DESeq2 Analysis](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/04_DESeq2_Analysis.R)
+
+🔗 Recommended Resources
+- [Statistical Analysis with R by Jubayer Hossain](https://mdjubayerhossain.com/SAR)
+- [R graph gallery](https://r-graph-gallery.com/)
+- [Data Visualization](https://www.data-to-viz.com/)
+- [NanX](https://nanx.me/ggsci/)
+- [Themes](https://github.com/hrbrmstr/hrbrthemes)
+- [R graph gallery](https://r-graph-gallery.com/package/ggthemes.html)
+- [Tidyplots](https://tidyplots.org/)
+- [ggpubr](https://rpkgs.datanovia.com/ggpubr/)
+
+
+
+
+
