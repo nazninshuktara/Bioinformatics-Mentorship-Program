@@ -58,16 +58,16 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install("Biostrings")
 ```
 
-## 📚 3. Interactive Practice Notebooks
-Complete the hands-on exercises in the following scripts/notebooks in sequential order:
+## 📚 3. Interactive Practice Scripts
+Complete the hands-on exercises in the following scripts in sequential order:
 
-- [Notebook 1: R Basics, Vectors, Matrices & Factors](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/01_Basics.R)
+- [Scripts 1: R Basics, Vectors, Matrices & Factors](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/01_Basics.R)
 
-- [Notebook 2: Data Frames, Conditional operatins & Custom Functions](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/02_Conditional_Operations.R)
+- [Scripts 2: Data Frames, Conditional operatins & Custom Functions](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/02_Conditional_Operations.R)
 
-- [Notebook 3: Data Exploration & Plotting with Tidyverse](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/03_Data_Exploration.R)
+- [Scripts 3: Data Exploration & Plotting with Tidyverse](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/03_Data_Exploration.R)
 
-- [Notebook 4: DESeq2 Analysis](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/04_DESeq2_Analysis.R)
+- [Scripts 4: DESeq2 Analysis](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/scripts/04_DESeq2_Analysis.R)
 
 🔗 Recommended Resources
 - [Statistical Analysis with R by Jubayer Hossain](https://mdjubayerhossain.com/SAR)
