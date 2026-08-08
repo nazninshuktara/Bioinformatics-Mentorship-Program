@@ -73,7 +73,7 @@ Complete the hands-on exercises in the following scripts in sequential order:
 - [Statistical Analysis with R by Jubayer Hossain](https://mdjubayerhossain.com/SAR)
 - [R graph gallery](https://r-graph-gallery.com/)
 - [Data Visualization](https://www.data-to-viz.com/)
-- [NanX](https://nanx.me/ggsci/)
+- [ggsci](https://nanx.me/ggsci/)
 - [Themes](https://github.com/hrbrmstr/hrbrthemes)
 - [R graph gallery](https://r-graph-gallery.com/package/ggthemes.html)
 - [Tidyplots](https://tidyplots.org/)
