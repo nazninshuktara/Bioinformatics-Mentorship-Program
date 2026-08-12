@@ -59,7 +59,7 @@ Complete the hands-on exercises in the following notebooks in sequential order:
 
 - [Notebook 3: Control Flow & Custom Functions](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python3.ipynb)
 
-- [Data Exploration and Error Handling](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python4.ipynb)
+- [Notebook 4: Data Exploration and Error Handling](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/python_notebooks/python4.ipynb)
 
 🔗 Recommended Resources
 - [Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
