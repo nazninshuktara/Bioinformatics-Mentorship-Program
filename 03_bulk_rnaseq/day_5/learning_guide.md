@@ -98,7 +98,6 @@ Sequencing platforms output raw reads in FASTQ format. Every single read is repr
 
 > [!NOTE]
 > **Batch Effects**: 
-
 > Non-biological variations introduced by handling samples in different batches, days, or by different technicians. Randomization and processing samples simultaneously prevent batch bias.
 
 ---
