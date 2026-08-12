@@ -74,16 +74,16 @@ Since high-throughput sequencers cannot read RNA directly, it must be converted 
 ---
 
 ## 3. Raw Data and Data Processing
-- **FASTQ File Format**
+**FASTQ File Format**
 Sequencing platforms output raw reads in FASTQ format. Every single read is represented by 4 lines:
 
-Line 1: @NS500177:196:HFTTTAFXX:1:11101:10916:1458 2:N:0:CGCGGCTG (Sequence Header & Unique ID starting with @)
+- **Line 1**: @NS500177:196:HFTTTAFXX:1:11101:10916:1458 2:N:0:CGCGGCTG (Sequence Header & Unique ID starting with @)
 
-Line 2: ACACGACGATGAGGTGACAGTCACGGAGGATAAGATCAATGCCCTCATTAAAGCAGCCGGTGTAA (Actual nucleotide sequence (A, C, G, T))
+- **Line 2**: ACACGACGATGAGGTGACAGTCACGGAGGATAAGATCAATGCCCTCATTAAAGCAGCCGGTGTAA (Actual nucleotide sequence (A, C, G, T))
 
-Line 3: + (Separator)
+- **Line 3**: + (Separator)
 
-Line 4: AAAAAEEEEEEEEEEE//AEEEAEEEEEEEEEEE/EE/<<EE/AAEEAEE///EEEEAEEEAEA< ## (Phred --- 3. Considerations Design Experimental Quality Scores) ```> [!WARNING]
+- **Line 4**: AAAAAEEEEEEEEEEE//AEEEAEEEEEEEEEEE/EE/<<EE/AAEEAEE///EEEEAEEEAEA< ## (Phred --- 3. Considerations Design Experimental Quality Scores) ```> [!WARNING]
 
 ### Data Preparation-The ultimate preprocessing steps
 1. Filter out garbage or low-quality reads.
