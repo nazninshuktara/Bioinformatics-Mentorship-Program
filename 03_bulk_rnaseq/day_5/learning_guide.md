@@ -97,7 +97,8 @@ Sequencing platforms output raw reads in FASTQ format. Every single read is repr
 > * **Biological Replicates:** Samples taken from independent biological subjects (e.g., 3 different mice). *A minimum of 3+ biological replicates per condition is required for statistical power in differential expression analysis.*
 
 > [!NOTE]
-> **Batch Effects**
+> **Batch Effects**: 
+
 > Non-biological variations introduced by handling samples in different batches, days, or by different technicians. Randomization and processing samples simultaneously prevent batch bias.
 
 ---
