@@ -132,6 +132,7 @@ FastQC is the standard tool to inspect raw reads before any downstream processin
 ---
 
 ## 4. Experimental Design and Replicates
+
 > **Technical vs. Biological Replicates**
 > * **Technical Replicates:** Repeating the assay on the same biological sample. Measures technical variation (rarely required in modern RNA-Seq).
 > * **Biological Replicates:** Samples taken from independent biological subjects (e.g., 3 different mice). *A minimum of 3+ biological replicates per condition is required for statistical power in differential expression analysis.*
