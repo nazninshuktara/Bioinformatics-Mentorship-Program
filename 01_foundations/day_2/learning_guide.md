@@ -837,7 +837,6 @@ wc --help       # quick flag summary
 | `man` / `--help` | Built-in manual / quick flag summary for a command. |
 
 ## ✍️ Further reading
-
 - The Unix shell (Software Carpentry) — https://swcarpentry.github.io/shell-novice/
 - Command Line Tools for Genomic Data Science (JHU / Florea, Coursera) — the source of today's toy-Plants dataset
 - Explain any shell command visually — https://explainshell.com/
