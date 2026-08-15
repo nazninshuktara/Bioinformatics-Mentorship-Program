@@ -1,7 +1,6 @@
 # 🧬 Day 4 — Introduction to Programming in the Bioinformatics: R Fundamentals
 
 > **Week 2, Day 4** · Saturday, July 11, 2026  
-> **Author:** Md. Jubayer Hossain
 ---
 
 ## 🎯 Learning Checklist
