@@ -36,7 +36,7 @@ As I progress through the sessions, the scripts and markdown notes will be organ
 ### 📊 Phase 2: Basic to Advanced Bulk RNA-Seq Analytics
 | Week | Session Topic | Tools | Notes / Guide |
 | :---: | :--- | :---: | :---: |
-| **Week 3** | Bulk RNA-Seq Intro & Analysis: From Fastq to Counts Matrix | Bash + R | ✅ Completed |
+| **Week 3** | Bulk RNA-Seq Intro & Analysis: From Fastq to Counts Matrix | Bash + R | [Day5](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_5/learning_guide.md), [Day6](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_6/learning_guide.md)|
 | **Week 4** | Count Table to Differential Gene Expression (DGE) & Pathway Analysis | DESeq2 / clusterProfiler | ⏳ Next Up |
 | **Week 5** | Batch Effects and Meta-Analysis using Public GEO Datasets | ComBat-Seq / MetaVolcano | ⏳ Pending |
 
