@@ -272,11 +272,11 @@ write.csv(tpm_counts, "outputs/counts_data/tpm_counts/GSE245922_tpm_counts.csv")
 > Next step after this (not covered in today's checklist, but where this feeds into): build your `col_data` metadata data frame with sample-to-condition mapping from `SRA_Run_table`, confirm `all(colnames(txi) == rownames(col_data))` is `TRUE`, then pass `txi` into `DESeqDataSetFromTximport()`.
 
 ### 💡 Step 7 — Sanity Check the Output
-- [1] `dim(txi$counts)` — rows = genes (symbols), columns = number of samples (matches `SRA_Run_table`)
-- [2] `colnames(txi$counts)` matches your sample naming exactly
-- [3] `file.exists(quant_files)` returned all `TRUE` before import
-- [4] No column is entirely zero (would indicate a failed sample import)
-- [5] `raw_counts` (`GSE245922_raw_counts.csv`) saved and ready to feed into `DESeqDataSetFromTximport()`
+- `dim(txi$counts)` — rows = genes (symbols), columns = number of samples (matches `SRA_Run_table`)
+- `colnames(txi$counts)` matches your sample naming exactly
+- `file.exists(quant_files)` returned all `TRUE` before import
+- No column is entirely zero (would indicate a failed sample import)
+- `raw_counts` (`GSE245922_raw_counts.csv`) saved and ready to feed into `DESeqDataSetFromTximport()`
 ---
 
 ## ✅ End-of-Day Checklist
