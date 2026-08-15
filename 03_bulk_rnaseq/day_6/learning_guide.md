@@ -1,7 +1,7 @@
 # 🧬 Day 6 — Bulk RNAseq Data Analysis: From Fastq to Counts Matrix
 
-> **Week 3, Day 6** · Saturday, July 18, 2026
-> **Author:** Naznin Akter 
+> **Week 3, Day 5** · Saturday, July 18, 2026  
+> **Author:** Naznin Akter
 ---
 
 ## 🎯 Learning Checklist
@@ -52,7 +52,8 @@ pixi add sra-tools parallel-fastq-dump fastqc multiqc trimmomatic salmon r-base 
 pixi shell
 ```
 
-> [!NOTE] Commit `pixi.toml` / `pixi.lock` to your GitHub repo — this is what makes your pipeline reproducible for anyone (including future-you) re-running the analysis.
+> [!NOTE] 
+> Commit `pixi.toml` / `pixi.lock` to your GitHub repo — this is what makes your pipeline reproducible for anyone (including future-you) re-running the analysis.
 
 Confirm each tool is reachable before moving on:
 
@@ -100,7 +101,8 @@ echo "All FASTQ files are saved in ../fastq/"
 - Organize files: `fastq/sample1_R1.fastq.gz`, `fastq/sample1_R2.fastq.gz` (paired-end) or single-end equivalents.
 - Cross-check inputs/SRA_Run_table.txt against the downloaded files to confirm sample-to-condition mapping (treatment/control, replicate number) before proceeding — this is your metadata table for DESeq2 later.
 
-> [!NOTE] Keep raw files **read-only** once downloaded (`chmod 444../fastq/*.fastq.gz`) — accidental overwriting of raw data is a common, hard-to-recover mistake.
+> [!NOTE] 
+> Keep raw files **read-only** once downloaded (`chmod 444../fastq/*.fastq.gz`) — accidental overwriting of raw data is a common, hard-to-recover mistake.
 
 ### 💡 Step 2 — Quality Control — FastQC + MultiQC
 
