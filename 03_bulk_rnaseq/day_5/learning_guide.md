@@ -186,18 +186,28 @@ FastQC is the standard tool to inspect raw reads before any downstream processin
 ## 9. The Whole Pipeline in One Picture
 ```
 FASTQ (raw reads + Phred quality)
-   ↓  FastQC → identify adapter/quality issues
-   ↓  Trimmomatic/Cutadapt/fastp → remove adapters & low-quality bases
-   ↓  FastQC again → confirm the fix worked
-   ↓  STAR/HISAT2 (alignment) or Salmon (pseudoalignment)
-   ↓  featureCounts/HTSeq or tximport → gene-level counts matrix
-   ↓  DESeq2: size factors (median-of-ratios) → dispersion shrinkage
+   ↓  
+FastQC → identify adapter/quality issues
+   ↓
+Trimmomatic/Cutadapt/fastp → remove adapters & low-quality bases
+   ↓
+FastQC again → confirm the fix worked
+   ↓
+STAR/HISAT2 (alignment) or Salmon (pseudoalignment)
+   ↓   
+featureCounts/HTSeq or tximport → gene-level counts matrix
+   ↓
+DESeq2: size factors (median-of-ratios) → dispersion shrinkage
         → design formula & contrast → NB hypothesis testing
-   ↓  Multiple testing correction (padj) + log2FC shrinkage (apeglm/ashr)
-   ↓  Visualization: PCA (QC check) → volcano/MA (results) → heatmap
-   ↓  Pathway analysis: ORA or GSEA against GO/KEGG/Reactome
-   ↓  Biological interpretation
-  ```
+   ↓
+Multiple testing correction (padj) + log2FC shrinkage (apeglm/ashr)
+   ↓  
+Visualization: PCA (QC check) → volcano/MA (results) → heatmap
+   ↓
+Pathway analysis: ORA or GSEA against GO/KEGG/Reactome
+   ↓
+Biological interpretation
+```
 
 🔗 Recommended Resources
 - [StatQuest](https://statquest.org/)
