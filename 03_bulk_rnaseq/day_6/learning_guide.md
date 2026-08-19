@@ -1,6 +1,6 @@
 # 🧬 Day 6 — Bulk RNAseq Data Analysis: From Fastq to Counts Matrix
 
-> **Week 3, Day 5** · Saturday, July 18, 2026  
+> **Week 3, Day 6** · Saturday, July 18, 2026  
 > **Author:** Naznin Akter
 ---
 
