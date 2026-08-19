@@ -277,6 +277,10 @@ write.csv(tpm_counts, "outputs/counts_data/tpm_counts/GSE245922_tpm_counts.csv")
 - `raw_counts` (`GSE245922_raw_counts.csv`) saved and ready to feed into `DESeqDataSetFromTximport()`
 ---
 
+## 🔍 Bulk RNA-Seq project Exploration
+- [salmon-rnaseq](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/tree/main/03_bulk_rnaseq/day_6/salmon-rnaseq)
+---
+
 ## ✅ End-of-Day Checklist
 - pixi environment set up, tools version-confirmed
 - FASTQ files downloaded via SRR_Acc_list, cross-checked against SRA_Run_table
