@@ -21,16 +21,14 @@
 - Dataset used: GSE245922 (NCBI GEO dataset)
 
 ## 📁 Project Directory Structure
-
-A clean work space prevents data loss and ensures reproducibility:
-
-```         
+```
 salmon_rnaseq/
 ├── inputs/           # SRR_Acc_list, SRA_Run_table, decoys, GENCODE fasta files, human_salmon_index
 ├── fastq/            # raw downloaded FASTQ files
 ├── outputs/          # qc, salmon_out, figures, tables
 └── scripts/          # Bash & R pipeline scripts
 ```
+
 ---
 
 ## 📑 Step-by-Step Pipeline Guide
