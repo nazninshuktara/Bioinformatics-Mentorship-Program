@@ -1,6 +1,8 @@
 # 🧬 Day 3 — Introduction to Programming in the Bioinformatics: Python Fundamentals
 
-> **Week 2, Day 3** · Friday, July 10, 2026  
+> **Week 2, Day 3** · Friday, July 10, 2026   
+> **Notes by:** Naznin Akter<br>
+> **Course material & scripts:** Md. Jubayer Hossain (DeepBio Academy)
 ---
 
 ## 🎯 Learning Checklist
