@@ -105,7 +105,7 @@ echo "All FASTQ files are saved in ../fastq/"
 
 ### 💡 Step 2 — Quality Control — FastQC + MultiQC
 
-Run FastQC on all raw FASTQ files before touching anything else.Use `scripts/02_qc.sh`
+Run FastQC on all raw FASTQ files before touching anything else. Use `scripts/02_qc.sh`
 
 ```bash
 #!/usr/bin/
@@ -201,7 +201,7 @@ done
 - Anything much lower is worth investigating (wrong reference build, contamination, wrong `-l` strandedness flag)
 
 ### 💡 Step 5 — Build the tx2gene Mapping Table (R, via EnsDb)
-Instead of building `tx2gene` from a downloaded GTF, pull the transcript-to-gene-symbol mapping directly from the `EnsDb.Hsapiens.v86` Bioconductor annotation package:
+Instead of building `tx2gene` from a downloaded GTF, pull the transcript-to-gene-symbol mapping directly from the `EnsDb.Hsapiens.v86` Bioconductor annotation package. Use `scripts/05_tximport_count.R`
 
 ```r
 # Install Bioconductor packages
@@ -232,6 +232,7 @@ head(tx2gene)
 > This approach maps transcripts to **gene symbols** (e.g., `TP53`) rather than Ensembl gene IDs, which is convenient for downstream biological interpretation and pathway analysis. It also avoids needing to download/manage a separate GTF file — the mapping lives inside the `EnsDb.Hsapiens.v86` package, so make sure its genome build (GRCh38) matches the one you used to build your Salmon index.
 
 ### 💡 Step 6 — Import with tximport → Counts Matrix (R)
+Use `scripts/05_tximport_count.R`
 
 ```r
 # Collect the sample quant files
