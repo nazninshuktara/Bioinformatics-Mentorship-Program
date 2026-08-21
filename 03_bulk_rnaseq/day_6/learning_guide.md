@@ -1,8 +1,8 @@
 # 🧬 Day 6 — Bulk RNAseq Data Analysis: From Fastq to Counts Matrix
 
 > **Week 3, Day 6** · Saturday, July 18, 2026  
-> **Notes by:** Naznin Akter 
-> **Course material & scripts:** Md. Jubayer Hossain
+> **Notes by:** Naznin Akter<br>
+> **Course material & scripts:** Md. Jubayer Hossain (DeepBio Academy)
 ---
 
 ## 🎯 Learning Checklist
@@ -51,7 +51,7 @@ pixi add sra-tools parallel-fastq-dump fastqc multiqc trimmomatic salmon r-base 
 pixi shell
 ```
 
-> [!NOTE] 
+> [!NOTE]<br> 
 > Commit `pixi.toml` / `pixi.lock` to your GitHub repo — this is what makes your pipeline reproducible for anyone (including future-you) re-running the analysis.
 
 Confirm each tool is reachable before moving on:
@@ -100,7 +100,7 @@ echo "All FASTQ files are saved in ../fastq/"
 - Organize files: `fastq/sample1_R1.fastq.gz`, `fastq/sample1_R2.fastq.gz` (paired-end) or single-end equivalents.
 - Cross-check inputs/SRA_Run_table.txt against the downloaded files to confirm sample-to-condition mapping (treatment/control, replicate number) before proceeding — this is your metadata table for DESeq2 later.
 
-> [!NOTE] 
+> [!NOTE]<br> 
 > Keep raw files **read-only** once downloaded (`chmod 444../fastq/*.fastq.gz`) — accidental overwriting of raw data is a common, hard-to-recover mistake.
 
 ### 💡 Step 2 — Quality Control — FastQC + MultiQC
@@ -130,7 +130,7 @@ echo "Quality check complete! Reports saved in ../outputs/qc/"
 - Sequence duplication levels (some duplication is *normal* in RNA-seq)
 - Over-represented sequences (often adapter or rRNA contamination)
 
-> [!NOTE]
+> [!NOTE]<br>
 > This pipeline quantifies directly from raw reads in Step 4 — Salmon's `--validateMappings` mode is fairly robust to residual adapter content and low-quality tails, so a separate trimming step is skipped here. Still open the MultiQC report before moving on: if adapter content or quality looks unusually bad for a specific sample, that's worth flagging even without a dedicated trim step.
 
 ### 💡 Step 3 — Build the Decoy-Aware Salmon Index
@@ -168,7 +168,7 @@ salmon index \
 
 echo "All files and outputs saved in the existing ./input directory"
 ```
-> [!NOTE]
+> [!NOTE]<br>
 > This only needs to run **once** per reference build — if `inputs/human_salmon_index` already exists and matches your intended GENCODE release, skip straight to Step 4.
 
 ### 💡 Step 4 — Quantify with Salmon
