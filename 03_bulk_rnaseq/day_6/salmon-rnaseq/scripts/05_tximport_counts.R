@@ -29,8 +29,7 @@ file.exists(quant_files)
 col_data <- data.frame(
   row.names = samples,
   sample    = samples,
-  condition = c("control", "control", "control", "covid19", "covid19", "control", "covid19", "covid19")
-)
+  condition = c("control", "control", "control", "covid19", "covid19", "control", "covid19", "covid19"))
 
 # condition as factor 
 col_data$condition <- factor(col_data$condition)
@@ -51,8 +50,7 @@ keys(EnsDb.Hsapiens.v86)
 tx2gene <- AnnotationDbi::select(
   EnsDb.Hsapiens.v86,
   keys    = keys(EnsDb.Hsapiens.v86),
-  columns = c("TXID", "SYMBOL")
-)
+  columns = c("TXID", "SYMBOL"))
 
 # Keep only transcript ID + symbol (drop the gene ID column)
 tx2gene <- dplyr::select(tx2gene, TXID, SYMBOL)
