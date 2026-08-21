@@ -1,7 +1,8 @@
 # 🧬 Day 5 — Introduction to Bulk RNA-Seq - From Quality Control to Pathway Analysis
 
 > **Week 3, Day 5** · Friday, July 17, 2026  
-> **Author:** Naznin Akter
+> **Notes by:** Naznin Akter<br>
+> **Course material & scripts:** Md. Jubayer Hossain (DeepBio Academy)
 ---
 
 ## 🎯 Learning Checklist
