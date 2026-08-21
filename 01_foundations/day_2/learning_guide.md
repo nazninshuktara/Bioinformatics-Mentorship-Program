@@ -1,7 +1,8 @@
 # 🧬 Day 2 — Command Line: Basic Unix + NGS Data Formats
 
 > **Week 1, Day 2** · Saturday, July 4, 2026  
-> **Author:** Md. Jubayer Hossain
+> **Notes by:** Naznin Akter<br>
+> **Course material & scripts:** Md. Jubayer Hossain (DeepBio Academy)
 ---
 
 ## 🎯 Learning Checklist
