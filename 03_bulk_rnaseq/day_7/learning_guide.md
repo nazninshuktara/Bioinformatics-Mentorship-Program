@@ -1,8 +1,8 @@
 # 🧬 Day 7 — Bulk RNAseq Data Analysis: From Count Table to Differential Gene Expression Analysis
 
 > **Week 4, Day 7** · Saturday, July 24, 2026  
-> **Notes by:** Naznin Akter
-> **Course material & scripts:** Md. Jubayer Hossain
+> **Notes by:** Naznin Akter<br>
+> **Course material & scripts:** Md. Jubayer Hossain (DeepBio Academy)
 ---
 
 ## 🎯 Learning Checklist
@@ -11,7 +11,7 @@
 - [3] Compare DESeq2, edgeR, and limma-voom — when to use which
 - [4] Understand study design formulas, normalization, dispersion, fold change, p-value, and FDR
 - [5] Read and interpret all 12 essential DGE plots biologically, not just visually
-- [6] Run the full practical pipeline: DGE testing → significant gene extraction
+- [6] Run the practical pipeline: normalize a count matrix, run PCA, and perform the actual DESeq2 DGE test
 
 ---
 
@@ -283,35 +283,41 @@ Biological conclusions
 
 ---
 
-## 📑 Part 4 — The Practical Pipeline (GSE245922)
+## 📑 Part 4 — The Practical Pipeline: Count Table → DGE Analysis (GSE245922)
 
-This is the actual script sequence run on the GSE245922 (control vs. covid19) dataset — from a fitted `dds` object through to pathway-level biology.
+This continues directly from the Day 6 count matrix (`txi` / raw counts from tximport) through normalization, PCA, and the actual DESeq2 hypothesis test.
 
 ```
-07_dge_analysis.R             → DESeq() test, diagnostics, results, significant genes
+06_count_normalization_&_pca_analysis   → build dds, size-factor normalization, rlog + PCA
+07_dge_analysis                         → DESeq() test, model-fit diagnostics, results, significant genes
 ```
-*(Scripts 05–06, covering tximport → count matrix → normalization/PCA, are documented in the Day 6 guide.)*
+*(Visualization and pathway/enrichment analysis are covered separately in the Day 8 guide.)*
 
-### Script 07 — DGE Testing
-1. Load the fitted `dds` (already has size factors from normalization)
-2. `dds <- DESeq(dds)` — the single call that estimates dispersion, fits the NB model, and tests every gene
-3. **Model-fit diagnostics before trusting any result:**
-   - `sizeFactors(dds)` — should sit near 1
-   - Raw vs. normalized `colSums(counts(dds))` — confirms normalization evened out depth differences
-   - `plotDispEsts(dds)` — dispersion should decrease as mean expression increases; gene estimates (black) should scatter around the fitted curve (red)
-4. `results(dds, contrast = c("condition", "covid19", "control"))` — explicit contrast, so direction is unambiguous
-5. `lfcShrink(..., type = "apeglm")` — shrinks noisy fold-change estimates from low-count genes before ranking/plotting
-6. Extract significant genes (`padj < 0.05`), split into `sig_up` / `sig_down` for direction-aware downstream use
+### Script 06 — Normalization + PCA
+1. Load the saved `txi` object and metadata (rebuild `col_data` from the saved CSV — don't assume it's still in memory from an earlier script/session)
+2. `DESeqDataSetFromTximport(txi, colData = col_data, design = ~ condition)` — binds counts, metadata, and the design formula into one object
+3. `estimateSizeFactors(dds)` — **median-of-ratios normalization**; size factors should sit near 1, large swings flag potential outlier samples
+4. `rlog(dds, blind = TRUE)` — variance-stabilizing transform *for visualization only* (`blind = TRUE` keeps QC unbiased by not using the sample groups)
+5. `plotPCA(rlog_dds, intgroup = "condition")` — do replicates cluster by condition as expected?
 
 > [!NOTE]
-> **Two-group design (`~ condition`) uses the Wald test**, not the Likelihood Ratio Test (LRT). LRT is for testing 3+ factor levels or comparing nested models — unnecessary extra complexity for a simple control-vs-treatment comparison.
+> Every script should be able to run **independently**, starting only from the previous script's saved output (`.rds`/`.csv` files) — not from variables left over in the R environment. This is what makes a pipeline reproducible across sessions.
 
+### Script 07 — The Actual DGE Test
+1. Load the `dds` object (already has size factors from Script 02)
+2. `dds <- DESeq(dds)` — one call that estimates dispersion, fits the negative binomial GLM, and tests every gene
+3. **Check the fit before trusting any result:**
+   - `sizeFactors(dds)` near 1
+   - `plotDispEsts(dds)` — dispersion should decrease as mean expression increases, gene estimates scattered around the fitted curve
+4. `results(dds, contrast = c("condition", "covid19", "control"))` — explicit contrast removes any ambiguity about direction
+5. `lfcShrink(..., type = "apeglm")` — shrinks noisy fold-change estimates from low-count genes, recommended before ranking or plotting
+6. Extract significant genes (`padj < 0.05`), split into `sig_up` / `sig_down`
 
-### Package Source Reminder
-| Source | Install with | Examples |
-|---|---|---|
-| CRAN | `install.packages("...")` | `tidyverse`, `pheatmap`, `ggrepel`, `ashr` |
-| Bioconductor | `BiocManager::install("...")` | `DESeq2`, `tximport`, `clusterProfiler`, `org.Hs.eg.db`, `pathview`, `enrichplot` |
+> [!WARNING]
+> A **two-group design (`~ condition`) uses the Wald test** (the default in `results()`). The Likelihood Ratio Test (LRT) is only needed for 3+ factor levels or nested model comparisons — using it here would be unnecessary complexity.
+
+> [!NOTE]
+> Base R diagnostic plots (`plotDispEsts()`, `plotMA()`) must be saved with `png()` → plot call → `dev.off()`, **not** `ggsave()` — `ggsave()` only works on `ggplot`-based figures.
 
 ---
 
