@@ -1,7 +1,8 @@
 # 🧬 Day 1 — Bioinformatics Workflow Setup: Building Your Computational Foundation
 
 > **Week 1, Day 1** · Friday, July 3, 2026  
-> **Author:** Md. Jubayer Hossain
+> **Notes by:** Naznin Akter<br>
+> **Course material & scripts:** Md. Jubayer Hossain (DeepBio Academy)
 ---
 
 ## 🎯 Learning Checklist
