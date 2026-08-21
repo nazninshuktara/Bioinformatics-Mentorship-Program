@@ -37,7 +37,7 @@ As I progress through the sessions, the scripts and markdown notes will be organ
 | Week | Session Topic | Tools | Learning Notes |
 | :---: | :--- | :---: | :---: |
 | **Week 3** | Bulk RNA-Seq Intro & Analysis: From Fastq to Counts Matrix | Bash + R | [Day5](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_5/learning_guide.md), [Day6](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_6/learning_guide.md)|
-| **Week 4** | Count Table to Differential Gene Expression (DGE) & Pathway Analysis | DESeq2 / clusterProfiler | ⏳ Next Up |
+| **Week 4** | Count Table to Differential Gene Expression (DGE) & Pathway Analysis | DESeq2 / clusterProfiler | [Day7](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_7/learning_guide.md), [Day8](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_8/learning_guide.md) |
 | **Week 5** | Batch Effects and Meta-Analysis using Public GEO Datasets | ComBat-Seq / MetaVolcano | ⏳ Pending |
 
 ### 🧫 Phase 3: Single-Cell & Spatial Transcriptomics
