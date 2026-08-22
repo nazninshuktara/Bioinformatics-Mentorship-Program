@@ -289,7 +289,7 @@ Each module has two documentation files:
 ---
 
 ## 🔍 Bulk RNA-Seq Project Exploration
-- [salmon-rnaseq](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/tree/main/03_bulk_rnaseq/day_6/salmon-rnaseq)
+- [PDAC](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/tree/main/03_bulk_rnaseq/day_9/PDAC)
 
 
 
