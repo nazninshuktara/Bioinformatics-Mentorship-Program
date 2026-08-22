@@ -94,7 +94,7 @@ A meta-analysis touches many datasets and produces many intermediate files — w
 ```
 bulk-rnaseq-meta-analysis/
 ├── data/                              # raw/downloaded datasets per study
-├── results/                           # output tables, figures, final gene lists
+├── outputs/                           # output tables, figures, final gene lists
 ├── scripts/                           # per-study processing + meta-analysis scripts
 ├── .gitignore                         # exclude large raw data files from version control
 ├── LICENSE                            # e.g., MIT license for open reuse
