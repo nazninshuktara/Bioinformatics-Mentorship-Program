@@ -1,0 +1,170 @@
+---
+title: "Module 1: Data Preparation"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    theme: cosmo
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: source
+---
+
+## What
+
+Data preparation is the essential first step before any RNA-seq analysis. This module loads raw count data and sample metadata, derives the experimental design structure (patient pairing), maps gene identifiers, filters low-quality genes, and saves processed objects for all downstream analyses.
+
+**Script:** `scripts/01_load_prepare_data.R`
+
+---
+
+## Why
+
+Every downstream analysis depends on correctly prepared input data. The specific steps in this module address distinct requirements:
+
+### Why validate that counts are integers?
+
+DESeq2 uses a **negative binomial distribution** to model RNA-seq counts. This distribution is defined only for non-negative integers. If the data were normalized (TPM, FPKM), the values would be decimals, and the negative binomial model would be inappropriate — you would need to use limma-voom instead. Checking for integer values is the first quality gate.
+
+### Why derive patient IDs?
+
+GSE130688 is a **paired design**: each patient contributed both tumor and adjacent normal tissue. The paired design (`~ patient + condition`) blocks on patient-specific baseline expression, dramatically improving statistical power. Without patient IDs, we could only use an unpaired design (`~ condition`), which would be less powerful and potentially confounded.
+
+### Why map Entrez IDs to gene symbols?
+
+Entrez gene IDs are numeric (e.g., 7157 for TP53) and required for MSigDB gene set matching in enrichment analysis. However, gene symbols (e.g., TP53) are human-readable and needed for:
+- Volcano plot labels
+- Heatmap gene labels
+- WGCNA module interpretation
+- Biological interpretation in general
+
+### Why pre-filter low-count genes?
+
+Genes with very low counts across all samples carry essentially no information — they are too noisy to detect differential expression. Removing them:
+- Reduces the multiple testing burden (fewer genes tested = more power after Benjamini-Hochberg correction)
+- Speeds up computation
+- Does NOT bias the test (these genes would be filtered by DESeq2's independent filtering anyway)
+
+The standard heuristic: keep genes with at least 10 counts in at least 2 samples.
+
+---
+
+## Steps
+
+### Step 1: Load raw count matrix
+- Read the TSV file (genes × samples)
+- Verify all values are integers (raw counts confirmed)
+- Dimensions: 39,376 genes × 30 samples
+
+### Step 2: Load sample metadata
+- Read metadata CSV (Sample ID + Condition)
+- 30 samples: 15 normal + 15 tumor
+
+### Step 3: Derive patient IDs
+- Samples alternate normal/tumor for the same patient
+- Patient ID = ceiling(row_index / 2) → P01 through P15
+- Confirmed against GEO sample titles ("Non-tumor 1N", "Tumor 1T", etc.)
+
+### Step 4: Standardize condition labels
+- Convert to lowercase, set "normal" as reference level
+- Factor levels: normal, tumor (normal is reference → positive log2FC = up in tumor)
+
+### Step 5: Validate sample ID matching
+- Confirm count matrix columns match metadata rows exactly
+- This is the #1 source of DESeq2 errors — always check
+
+### Step 6: Map Entrez IDs to gene symbols
+- Use org.Hs.eg.db AnnotationDbi::select()
+- 37,692 of 39,376 Entrez IDs mapped to symbols (95.7%)
+- Unmapped IDs are typically retired Entrez IDs or non-standard loci
+
+### Step 7: Pre-filter low-count genes
+- Keep genes with >= 10 counts in >= 2 samples
+- Retained 23,235 of 39,376 genes (59%)
+- Filtered out 16,141 low-count genes
+
+### Step 8: Save processed data
+- `data/sample_metadata_enriched.csv` — metadata with patient IDs
+- `data/gene_id_mapping.csv` — Entrez ID → symbol mapping
+- RDS objects for efficient downstream loading
+
+---
+
+## Key Parameters
+
+| Parameter | Value | Rationale |
+|-----------|-------|-----------|
+| Count filter threshold | >= 10 counts in >= 2 samples | Standard heuristic; removes genes with no information |
+| Reference condition | normal | Positive log2FC = upregulated in tumor (intuitive direction) |
+| Gene ID type | Entrez → Symbol | Entrez for MSigDB matching; Symbol for interpretability |
+
+---
+
+## Biological Context
+
+The paired tumor-vs-normal design is the foundation of this entire analysis. By comparing each patient's tumor tissue to their own adjacent normal pancreatic tissue, we control for:
+
+- **Inter-patient genetic variability** — each person has a different genetic background
+- **Tissue microenvironment** — even adjacent tissue from the same organ can vary
+- **Technical variability** — samples from the same patient are often processed together
+
+This design isolates the question: "What changes specifically when normal pancreatic tissue becomes PDAC tumor tissue?" The answer — gene expression changes that are consistent across patients despite their different backgrounds — is the most robust way to identify tumor-specific biology.
+
+---
+
+## Code Walkthrough
+
+### Loading and validating counts
+
+```r
+counts <- read.delim("data/GSE130688_raw_counts.tsv", row.names = 1, check.names = FALSE)
+counts <- as.matrix(counts)
+
+# CRITICAL: verify integer counts (DESeq2 requirement)
+if (!all(counts == floor(counts), na.rm = TRUE)) {
+  stop("Non-integer values detected — data may be normalized, not raw counts")
+}
+```
+
+### Deriving patient IDs from paired design
+
+```r
+# Samples alternate: normal, tumor, normal, tumor, ...
+# Patient = ceiling(row_index / 2)
+metadata$patient <- paste0("P", sprintf("%02d", ceiling(seq_len(nrow(metadata)) / 2)))
+```
+
+### Mapping Entrez IDs to symbols
+
+```r
+symbol_map <- AnnotationDbi::select(
+  org.Hs.eg.db,
+  keys = entrez_ids,
+  columns = c("ENTREZID", "SYMBOL", "GENENAME"),
+  keytype = "ENTREZID"
+)
+```
+
+### Pre-filtering low-count genes
+
+```r
+keep <- rowSums(counts >= 10) >= 2  # at least 10 counts in at least 2 samples
+counts_filtered <- counts[keep, ]
+```
+
+---
+
+## Expected Outputs
+
+| File | Description |
+|------|-------------|
+| `data/sample_metadata_enriched.csv` | Metadata with derived patient IDs and condition factor |
+| `data/gene_id_mapping.csv` | Entrez ID → gene symbol → gene name mapping |
+| `data/counts_filtered.rds` | Filtered count matrix (23,235 genes × 30 samples) |
+| `data/metadata.rds` | Processed metadata for downstream scripts |
+| `data/gene_mapping.rds` | Gene ID mapping for downstream scripts |

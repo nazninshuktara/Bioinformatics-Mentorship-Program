@@ -1,0 +1,210 @@
+---
+title: "Module 2: Differential Expression Analysis with DESeq2"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    theme: cosmo
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: source
+---
+
+## What
+
+DESeq2 identifies genes that are differentially expressed between two (or more) conditions by modeling RNA-seq count data with a **negative binomial distribution**. It accounts for the unique statistical properties of count data — particularly the relationship between mean and variance — and provides statistically rigorous p-values and fold-change estimates.
+
+**Scripts:**
+- `scripts/02_deseq2_differential_expression.R` — Analysis
+- `scripts/03_deseq2_visualization.R` — QC and results plots
+
+---
+
+## Why
+
+### Why not just use a t-test on normalized counts?
+
+RNA-seq count data has three properties that violate the assumptions of standard statistical tests (t-test, ANOVA):
+
+1. **Count data (not continuous):** Counts are non-negative integers. A t-test assumes normally distributed residuals, which is inappropriate for counts (especially low counts).
+2. **Mean-variance dependence:** In RNA-seq, variance increases with mean expression. Lowly expressed genes are much noisier than highly expressed ones. A t-test assumes homoscedasticity (equal variance).
+3. **Small sample sizes:** RNA-seq experiments typically have few replicates (3-15 per group). DESeq2 borrows information across genes (empirical Bayes shrinkage of dispersions) to improve variance estimates, which is critical with small samples.
+
+### Why the negative binomial distribution?
+
+The negative binomial (NB) distribution models count data with overdispersion (variance > mean). It has two parameters:
+- **mean (mu):** the expected count for a gene in a given condition
+- **dispersion (alpha):** how much the variance exceeds the mean: Var = mu + alpha * mu^2
+
+DESeq2 estimates gene-wise dispersions, then shrinks them toward a fitted trend (empirical Bayes). This shrinkage is the key to DESeq2's power with small sample sizes — it stabilizes variance estimates by borrowing information from all genes.
+
+### Why a paired design?
+
+This is the **central teaching point** of this module. GSE130688 has paired samples (tumor + normal from the same patient). The design formula `~ patient + condition` tells DESeq2 to:
+
+1. Estimate a separate baseline expression level for each patient (the `patient` term)
+2. Test whether the `condition` coefficient (tumor vs. normal) is significantly different from zero, **after accounting for patient-specific baselines**
+
+Without the patient term (`~ condition`), inter-patient variability would inflate the residual variance, reducing power and potentially producing false positives if patients happen to differ systematically.
+
+**Analogy:** Imagine measuring blood pressure before and after a drug in 15 patients. You wouldn't compare the 15 "after" measurements to 15 "before" measurements from different people — you'd compare each patient's "after" to their own "before." The paired design does exactly this for gene expression.
+
+### Why LFC shrinkage?
+
+Log fold change (LFC) estimates from low-count genes are extremely noisy. A gene with 1 count in normal and 10 counts in tumor has log2FC = 3.32, but this could easily be noise. **apeglm shrinkage** (Zhu et al. 2018) applies a heavy-tailed prior to the LFC estimates, shrinking noisy estimates toward zero while preserving large true effects. This produces:
+- Stable LFC estimates for ranking and visualization
+- Clean MA plots (no "trumpet" shape at low expression)
+- Better gene rankings for GSEA
+
+**Important:** Shrinkage affects only the LFC estimates, NOT the p-values. Use shrunk LFC for visualization/ranking; use unshrunk results for the statistical test.
+
+---
+
+## Steps
+
+### Script 03: DESeq2 Analysis
+
+#### Step 1: Construct DESeqDataSet
+- Design formula: `~ patient + condition` (paired design)
+- Reference level: normal (positive log2FC = up in tumor)
+- Note: Batch was checked in Script 02 and found to be confounded with patient. The paired design absorbs batch for the within-patient comparison, so no batch term is added to the design.
+
+#### Step 2: Run DESeq2 pipeline
+Three core steps executed by `DESeq()`:
+1. **estimateSizeFactors():** Median-of-ratios normalization — corrects for library size (sequencing depth) differences between samples
+2. **estimateDispersions():** Fits the mean-dispersion relationship and shrinks gene-wise dispersion estimates toward the trend
+3. **nbinomWaldTest():** Fits the NB GLM and computes Wald statistics for each coefficient
+
+#### Step 3: Extract results
+- Contrast: `condition tumor vs. normal`
+- Output: baseMean, log2FoldChange, lfcSE, stat, pvalue, padj
+- Independent filtering: removes low-count genes from multiple testing correction (default)
+
+#### Step 4: LFC shrinkage
+- Method: apeglm (heavy-tailed prior)
+- Applied to the condition coefficient
+- Produces stable LFC for visualization and ranking
+
+#### Step 5: Export results
+- Full results (unshrunk) — for statistical reference
+- Shrunk results — for visualization and ranking
+- Normalized counts — for downstream use
+- Significant genes (padj < 0.05, |log2FC| >= 1) — for ORA and cross-referencing
+
+### Script 04: Visualization
+
+#### Step 1: Variance-stabilizing transformation (VST)
+- Transforms counts so variance is approximately constant across the expression range
+- Required for PCA, heatmaps, and sample distance calculations (which assume homoscedasticity)
+- Also saved for WGCNA (Module 4)
+
+#### Step 2-7: Generate six plots
+1. **Dispersion plot** — validates the mean-dispersion model fit
+2. **PCA plot** — reveals sample clustering by condition and patient
+3. **Sample distance heatmap** — pairwise sample similarity
+4. **MA plot** — log2FC vs. expression level (shrunk LFC)
+5. **Volcano plot** — log2FC vs. significance with top gene labels
+6. **Top genes heatmap** — expression of top 50 significant genes
+
+---
+
+## Key Parameters
+
+| Parameter | Value | Rationale |
+|-----------|-------|-----------|
+| Design formula | `~ patient + condition` | Paired design; blocks on patient-specific baseline |
+| Reference condition | normal | Positive log2FC = upregulated in tumor |
+| Significance threshold | padj < 0.05 | Standard FDR threshold (Benjamini-Hochberg) |
+| Effect size threshold | \|log2FC\| >= 1 | 2-fold change minimum for biological significance |
+| LFC shrinkage | apeglm | Best-performing shrinkage method; preserves large effects |
+| Transformation | VST | Appropriate for 30 samples; faster than rlog |
+| Pre-filtering | >= 10 counts in >= 2 samples | Removes uninformative genes (Module 1) |
+
+---
+
+## Biological Context
+
+This analysis identifies genes whose expression changes specifically in PDAC tumor tissue relative to matched normal pancreatic tissue. The results reveal the molecular programs that distinguish tumor from normal — the foundation for understanding PDAC biology.
+
+In PDAC, we expect to find:
+- **Downregulated genes:** Normal pancreatic acinar cell function (digestive enzymes like CTRB1, CPA1, PNLIP, CEL, CLPS, AMY1A) — the tumor loses the identity of its tissue of origin
+- **Upregulated genes:** Tumor-promoting programs (cell cycle, proliferation, stromal remodeling, immune response, EMT) — the tumor acquires new malignant capabilities
+
+The paired design ensures these changes are tumor-specific, not merely reflecting differences between patients.
+
+---
+
+## Code Walkthrough
+
+### Constructing the DESeqDataSet with paired design
+
+```r
+dds <- DESeqDataSetFromMatrix(
+  countData = counts,
+  colData   = metadata,
+  design    = ~ patient + condition  # patient blocks; condition tests
+)
+dds$condition <- relevel(dds$condition, ref = "normal")
+```
+
+### Running the DESeq2 pipeline
+
+```r
+dds <- DESeq(dds)  # runs size factors, dispersions, Wald test in sequence
+```
+
+### Extracting results with explicit contrast
+
+```r
+res <- results(dds, contrast = c("condition", "tumor", "normal"), alpha = 0.05)
+```
+
+### Applying LFC shrinkage
+
+```r
+res_shrunk <- lfcShrink(dds, coef = "condition_tumor_vs_normal", type = "apeglm")
+```
+
+### Variance-stabilizing transformation for visualization
+
+```r
+vsd <- vst(dds, blind = FALSE)
+```
+
+---
+
+## Expected Outputs
+
+### Tables
+
+| File | Description |
+|------|-------------|
+| `tables/deseq2_results.csv` | Full results (unshrunk): baseMean, log2FC, lfcSE, stat, pvalue, padj |
+| `tables/deseq2_results_shrunk.csv` | Shrunk LFC results for visualization/ranking |
+| `tables/deseq2_normalized_counts.csv` | Size-factor normalized counts |
+| `tables/deseq2_significant_genes.csv` | Significant genes (padj < 0.05, \|log2FC\| >= 1) |
+
+### Figures
+
+| File | Description |
+|------|-------------|
+| `figures/deseq2_dispersion.png` | Gene-wise dispersion estimates vs. fitted trend |
+| `figures/deseq2_pca.png` | PCA colored by condition, labeled by patient |
+| `figures/deseq2_sample_distance.png` | Sample-to-sample Euclidean distance heatmap |
+| `figures/deseq2_ma_plot.png` | Shrunk log2FC vs. expression level |
+| `figures/deseq2_volcano.png` | log2FC vs. -log10(padj) with top gene labels |
+| `figures/deseq2_top_genes_heatmap.png` | Top 50 significant genes (z-scored, VST) |
+
+### RDS Objects (for downstream scripts)
+
+| File | Used By |
+|------|---------|
+| `data/dds_object.rds` | Scripts 04, 05, 06 |
+| `data/deseq2_res.rds` | Scripts 05, 06 |
+| `data/deseq2_res_shrunk.rds` | Scripts 05, 06, 08 |
+| `data/vst_transformed.rds` | Scripts 07, 08 (WGCNA) |

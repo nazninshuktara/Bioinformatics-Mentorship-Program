@@ -1,0 +1,221 @@
+---
+title: "Module 1b: Batch Effect Detection & Diagnosis"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    theme: cosmo
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: source
+---
+
+## What
+
+This module detects, visualizes, and diagnoses **batch effects** — systematic technical variation introduced when samples are processed in different groups (different days, sequencing runs, instruments, or library preparation batches). Batch effects can dwarf biological signal and produce false positives if not addressed.
+
+**Script:**
+- `scripts/02_batch_correction.R` — Batch detection, diagnosis, and confounding analysis
+
+---
+
+## Why
+
+### Why check for batch effects at all?
+
+Batch effects are the **#1 source of spurious signal** in multi-batch RNA-seq studies [1]. When samples are processed at different times or on different instruments, technical variation (library prep efficiency, sequencing depth, reagent lots, instrument calibration) can be larger than the biological variation you are trying to detect. If batch correlates with your biological variable of interest, the results can be entirely driven by technical artifacts.
+
+Every RNA-seq analysis that spans multiple processing batches **must** check for batch effects before differential expression. Skipping this step risks reporting batch differences as biological findings.
+
+### Why detection instead of correction here?
+
+GSE130688 contains samples from two GEO submissions, identifiable by GSM accession number ranges:
+
+| Batch | GSM range | Samples | Patients |
+|-------|-----------|---------|----------|
+| Batch 1 | GSM37xxxxx | 28 | P01-P14 |
+| Batch 2 | GSM44xxxxx | 2 | P15 only |
+
+**Batch is perfectly confounded with patient** — patient P15 appears only in Batch 2. This creates a fundamental statistical constraint:
+
+1. **Cannot add `batch` to the DESeq2 design** (`~ patient + condition + batch`): the model would have perfect multicollinearity (batch is a linear combination of patient indicators), making it unestimable. R would drop the term or fail.
+2. **Cannot apply ComBat to the counts**: ComBat (sva package) removes batch effects by estimating and subtracting batch-specific means. With only 2 samples in Batch 2, the batch mean estimate would be wildly unstable. More importantly, applying ComBat to counts breaks the negative binomial assumption that DESeq2 relies on.
+3. **The paired design already handles it**: because each patient's tumor and normal pair are in the **same batch**, the `patient` blocking term in `~ patient + condition` absorbs all batch effects for the within-patient comparison. The tumor-vs-normal contrast is computed within each patient, and since both samples share the same batch, batch cancels out.
+
+This is a **critical teaching point**: confounding is not always a disaster. A well-designed blocking structure (paired design) can rescue a confounded batch variable for the comparison of interest. The key is to **diagnose before deciding** — blindly applying ComBat to confounded data would be worse than doing nothing.
+
+### Why three diagnostic approaches?
+
+We use three complementary methods because each detects different types of batch effects:
+
+1. **PCA** — detects global structure. If samples cluster by batch rather than condition, batch dominates. Three panels (batch, condition, patient) let you compare which factor drives separation.
+2. **RLE (Relative Log Expression)** — detects per-sample distributional shifts. RLE medians far from 0 indicate library-level biases that PCA might miss.
+3. **Variance partition** — quantifies numerically how much variance each factor explains. This is the most objective assessment: if batch explains more variance than condition, correction is urgent; if condition dominates, the analysis is robust.
+
+---
+
+## Steps
+
+### Script 02: Batch Effect Detection & Diagnosis
+
+#### Step 1: Load data and derive batch variable
+- Load filtered counts and metadata from Script 01
+- Derive `batch` from GSM accession numbers: `ifelse(gsm_num < 4000000, "Batch1", "Batch2")`
+- Add batch column to metadata; save updated metadata
+
+**Why derive from GSM IDs?** GEO series often combine samples from multiple submissions. The GSM accession number encodes the submission order — large gaps in GSM numbers indicate separate submissions, which typically correspond to different processing batches.
+
+#### Step 2: Confounding diagnosis
+- Cross-tabulate batch x patient
+- Check if each patient appears in only one batch (confounded) or multiple batches (not confounded)
+- Print implications for the DESeq2 design
+
+**Key output:** The cross-tabulation reveals that P15 is the only patient in Batch 2, confirming perfect confounding.
+
+#### Step 3: VST transformation (blind=TRUE)
+- Apply Variance Stabilizing Transformation with `blind = TRUE`
+- `blind = TRUE` means the transformation ignores the design formula — this is correct for QC/diagnostics where we want to see ALL variation, including batch effects
+- Contrast with Script 04, which uses `blind = FALSE` for downstream analysis (where we want the transformation to partially account for the design)
+
+**Why blind=TRUE for QC?** If we used `blind = FALSE`, the transformation would use the design formula to remove known variation — potentially hiding the very batch effects we're trying to detect. For diagnostics, we want the unfiltered view.
+
+#### Step 4: PCA for batch detection
+- PCA on top 500 most variable genes (VST-transformed)
+- Three side-by-side panels: colored by batch, by condition, by patient
+- Patient labels on points for identification
+
+**What to look for:**
+- If PC1 separates by **condition** (tumor vs normal) → biological signal dominates (good)
+- If PC1 separates by **batch** → technical signal dominates (problem)
+- If PC1 separates by **patient** → inter-individual variation dominates (expected, handled by paired design)
+
+#### Step 5: RLE (Relative Log Expression) plot
+- For each gene, compute RLE = expression in sample - median expression across all samples
+- Boxplot of RLE values per sample, grouped/colored by batch
+- Median line at 0 (ideal); deviations indicate library-level biases
+
+**What to look for:**
+- All boxplot medians near 0 → no systematic library bias
+- One batch shifted up or down → batch-level library size or composition bias
+- Very different spreads → heteroscedastic batch effects
+
+#### Step 6: Variance partition
+- For each of the top 2000 variable genes, fit a linear model `~ batch + condition + patient`
+- Decompose total variance using sequential (Type I) sums of squares
+- Variance fraction for each factor = SS_factor / SS_total
+- Report mean and median variance explained per factor across all genes
+
+**Why sequential ANOVA instead of the variancePartition package?** The variancePartition package (which uses lme4 mixed models) had a compatibility issue with the current lme4/reformulas versions. The sequential ANOVA approach is more transparent for teaching (students can see exactly how variance is decomposed), has no fragile dependencies, and produces equivalent results: the proportion of expression variance attributable to each factor.
+
+**Interpretation:**
+- `condition` should explain the most variance (it's the biological variable of interest)
+- `patient` explains inter-individual variation (expected, controlled by paired design)
+- `batch` should be small relative to condition (if large, correction is needed)
+- Because batch is confounded with patient, the patient term absorbs most of the batch+patient shared variance
+
+#### Step 7: Teaching summary
+- Print a concise summary of the batch diagnosis
+- State the conclusion: paired design handles confounded batch; no correction needed for DE
+- Note the WGCNA caveat: P15's samples may show batch-influenced network positions
+
+---
+
+## Parameters
+
+| Parameter | Value | Rationale |
+|-----------|-------|-----------|
+| VST `blind` | `TRUE` | QC mode — see all variation including batch |
+| PCA top genes | 500 | Standard for sample-level QC; enough to capture structure |
+| RLE reference | median across samples | Standard RLE definition |
+| Variance partition genes | top 2000 | Representative subset for speed; full 23k would be slow |
+| Variance partition method | sequential ANOVA (Type I SS) | Transparent, dependency-light; equivalent to variancePartition |
+| Factor order in ANOVA | batch, condition, patient | Batch first (most conservative for detecting batch effects) |
+
+---
+
+## Biological Context
+
+### What are batch effects in RNA-seq?
+
+RNA-seq measures gene expression through a multi-step process: RNA extraction, library preparation, sequencing, and computational quantification. Each step can introduce technical variation:
+
+- **RNA extraction**: RNA quality (RIN), yield, degradation
+- **Library preparation**: reagent lots, enzyme efficiency, fragmentation
+- **Sequencing**: instrument, flowcell, lane, cluster density
+- **Quantification**: reference genome version, alignment parameters
+
+When samples are processed in separate batches, these technical factors vary systematically between batches, creating a batch effect — a technical signal that can be mistaken for biology.
+
+### Why is confounding dangerous in general?
+
+In this dataset, confounding is **rescued** by the paired design. But in general, confounding is the most dangerous scenario in experimental design:
+
+- If batch = condition (e.g., all tumor samples in batch 1, all normal in batch 2), you **cannot** distinguish batch from biology — every DE gene could be a batch artifact.
+- If batch = patient (as here), you cannot separate batch from patient effects — but the paired design sidesteps this by comparing within-patient.
+- The only true fix for confounding is **better experimental design** (randomize samples across batches). Post-hoc correction (ComBat, SVA) can help when batch is NOT confounded, but cannot rescue full confounding.
+
+### When SHOULD you apply ComBat?
+
+ComBat (or limma::removeBatchEffect) is appropriate when:
+1. Batch is **not** confounded with your variable of interest (both batches contain both conditions)
+2. You have **enough samples per batch** (rule of thumb: ≥5 per batch for stable estimation)
+3. You're applying it to **transformed data** (VST/logCPM), not raw counts
+4. You include the biological variable as a covariate in ComBat (so it preserves biological signal while removing batch)
+
+---
+
+## Code Walkthrough
+
+### Key function: VST with blind=TRUE
+```r
+dds_qc <- DESeqDataSetFromMatrix(countData = counts, colData = meta, design = ~ 1)
+vsd_qc <- vst(dds_qc, blind = TRUE)
+```
+`design = ~ 1` (intercept only) with `blind = TRUE` ensures the transformation doesn't use any design information — we see the raw structure of the data.
+
+### Key function: RLE computation
+```r
+gene_medians <- apply(vst_mat, 1, median)
+rle_mat <- sweep(vst_mat, 1, gene_medians, FUN = function(x, m) x - m)
+```
+For each gene (row), subtract the median across all samples. In a clean dataset, each sample's RLE distribution should be centered at 0.
+
+### Key function: Sequential ANOVA variance partition
+```r
+compute_var_fractions <- function(y, batch, condition, patient) {
+  fit <- lm(y ~ batch + condition + patient)
+  ss <- anova(fit)$"Sum Sq"  # sequential SS
+  ss / sum(ss)  # variance fractions
+}
+vp_results <- t(apply(vst_vp, 1, compute_var_fractions, ...))
+```
+For each gene, fit a linear model and decompose variance using sequential sums of squares. The order of terms matters: `batch` is entered first, so it claims any variance it can explain before `condition` and `patient` are considered.
+
+---
+
+## Expected Outputs
+
+| File | Type | Description |
+|------|------|-------------|
+| `figures/batch_pca.png` | Figure | 3-panel PCA: colored by batch, condition, patient |
+| `figures/batch_rle_plot.png` | Figure | RLE boxplot by batch |
+| `figures/batch_variance_partition.png` | Figure | Variance partition boxplot |
+| `tables/batch_variance_partition.csv` | Table | Per-gene variance fractions |
+| `tables/batch_variance_partition_summary.csv` | Table | Mean/median variance per factor |
+| `data/metadata.rds` | RDS | Updated metadata with batch column |
+| `data/sample_metadata_enriched.csv` | CSV | Updated metadata CSV with batch column |
+
+---
+
+## References
+
+[1] Leek JT, Scharpf RB, Bravo HC, et al. Tackling the widespread and critical impact of batch effects in high-throughput data. *Nat Rev Genet.* 2010;11(10):733-739. doi:10.1038/nrg2825
+
+[2] Johnson WE, Li C, Rabinovic A. Adjusting batch effects in microarray expression data using empirical Bayes methods. *Biostatistics.* 2007;8(1):118-127. (ComBat)
+
+[3] Risso D, Ngai J, Speed TP, Dudoit S. Normalization of RNA-seq data using factor analysis of control genes or samples. *Nat Biotechnol.* 2014;32(9):896-902. (RUV/SVA alternatives)
