@@ -332,6 +332,4 @@ Follow the cell line-specific SOP for medium changes, passaging, incubator condi
 Passaging prevents overconfluence, maintains healthy growth conditions, and provides cells at an appropriate density for continued culture or experiments.
 
 ### Documentation
-
 Accurate records of cell line identity, passage number, seeding density, media, treatments, observations, and contamination checks support traceability and reproducibility.
----
