@@ -720,3 +720,261 @@ Pathway Analysis
 - *Janeway's Immunobiology*
 - *Cellular and Molecular Immunology* — Abbas et al.
 - *Molecular Biology of the Cell* — Alberts et al.
+---
+
+# Required Practical - Immunology
+
+## Practical 1 — PBMC Isolation, Cell Counting, and Viability Assessment
+
+### Aim
+
+To isolate peripheral blood mononuclear cells (PBMCs), determine cell concentration, and assess cell viability.
+
+### Principle
+
+PBMCs include:
+
+- Lymphocytes
+- Monocytes
+
+After isolation, cells are counted and viability is assessed before downstream immunology experiments.
+
+### Key Topics
+
+- PBMC concept
+- Sterile sample handling
+- Cell counting
+- Hemocytometer or automated cell counter
+- Trypan blue exclusion
+- Cell viability calculation
+- Cell storage and labelling
+
+### Cell Viability Formula
+
+```text
+Cell viability (%) = Viable cells / Total cells × 100
+```
+---
+## Practical 2 — Antigen-Antibody Reaction and ELISA
+
+### Aim
+To detect or quantify an antigen or antibody using enzyme-linked immunosorbent assay.
+
+### Principle
+
+ELISA is based on specific binding between an antigen and an antibody.
+
+```
+Antigen or antibody
+ ↓
+Specific antibody-antigen binding
+ ↓
+Enzyme-linked detection
+ ↓
+Colour development
+ ↓
+Absorbance measurement
+```
+
+### Main ELISA Types
+
+| ELISA Type | Main Use |
+| :--- | :--- |
+| **Direct ELISA** | Detects antigen using labelled primary antibody |
+| **Indirect ELISA** | Detects antibody using labelled secondary antibody |
+| **Sandwich ELISA** | Detects antigen between capture and detection antibodies |
+| **Competitive ELISA** | Measures competition between sample and labelled antigen or antibody |
+
+### Applications
+* Antibody detection
+* Antigen detection
+* Cytokine measurement
+* Vaccine-response studies
+* Biomarker analysis
+
+---
+
+## Practical 3 — Flow Cytometry and Immune-Cell Immunophenotyping
+
+### Aim
+To identify and quantify immune-cell populations using fluorescently labelled antibodies.
+
+### Principle
+* Flow cytometry analyzes individual cells as they pass through a laser beam.
+* Fluorescent antibodies bind to specific cell-surface or intracellular markers.
+
+### Important Immune Markers
+
+| Marker | Common Cell Population |
+| :--- | :--- |
+| **CD3** | T cells |
+| **CD4** | Helper T cells |
+| **CD8** | Cytotoxic T cells |
+| **CD19 or CD20** | B cells |
+| **CD14** | Monocytes |
+| **CD56** | Natural killer cells |
+
+### General Workflow
+```
+Cell suspension
+ ↓
+Antibody staining
+ ↓
+Flow cytometer acquisition
+ ↓
+Gating strategy
+ ↓
+Immune-cell population analysis
+```
+
+### Key Outputs
+* Percentage of each immune-cell population
+* Cell-marker expression
+* Cell viability
+* Cell activation-marker expression
+
+---
+
+## Practical 4 — Cytokine Detection and Measurement
+
+### Aim
+To measure cytokines released during immune or inflammatory responses.
+
+### Principle
+Cytokines are immune signalling molecules. Their concentration can be measured using antibody-based assays.
+
+### Common Cytokines
+
+| Cytokine | General Role |
+| :--- | :--- |
+| **IL-1** | Inflammation |
+| **IL-6** | Inflammation and acute-phase response |
+| **TNF** | Inflammation |
+| **IFN-α/β** | Antiviral response |
+| **IFN-γ** | Immune activation |
+| **IL-10** | Immune regulation |
+
+### Methods
+
+| Method | Use |
+| :--- | :--- |
+| **ELISA** | Measurement of one cytokine at a time |
+| **Multiplex bead assay** | Measurement of multiple cytokines together |
+| **RT-qPCR** | Measurement of cytokine gene expression |
+
+### Applications
+* Infection research
+* Inflammation studies
+* Vaccine studies
+* Autoimmune disease research
+* Drug-response studies
+
+---
+
+## Practical 5 — Immunofluorescence Staining and Microscopy
+
+### Aim
+To detect immune markers or proteins in cells using fluorescent antibodies.
+
+### Principle
+Fluorescently labelled antibodies bind to specific target molecules inside or on the surface of cells.
+
+### General Workflow
+```
+Cells or tissue sample
+ ↓
+Fixation
+ ↓
+Permeabilization where required
+ ↓
+Primary antibody binding
+ ↓
+Fluorescent secondary antibody or labelled antibody
+ ↓
+Fluorescence microscopy
+ ↓
+Image analysis
+```
+
+### Applications
+* Detection of immune-cell markers
+* Detection of viral proteins
+* Localization of cytokines or receptors
+* Host-pathogen interaction study
+* Cell-signalling study
+
+---
+
+## Practical 6 — Immune-Cell Activation and Proliferation Assay
+
+### Aim
+To assess activation or proliferation of immune cells after antigenic or mitogenic stimulation.
+
+### Principle
+Immune cells can respond to stimulation by:
+* Activation
+* Cytokine production
+* Cell proliferation
+* Surface-marker changes
+
+### Key Measurements
+
+| Measurement | Example |
+| :--- | :--- |
+| **Cell proliferation** | Increase in dividing lymphocytes |
+| **Activation markers** | Change in immune-cell surface markers |
+| **Cytokine release** | Increased cytokine concentration |
+| **Cell viability** | Survival after stimulation or treatment |
+
+### Applications
+* T-cell-response studies
+* Vaccine-response studies
+* Drug-response studies
+* Immunotherapy research
+* Host-pathogen interaction research
+
+---
+
+## Practical 7 — Immune Gene Expression Analysis by RT-qPCR
+
+### Aim
+To measure expression of immune-related genes using RT-qPCR.
+
+### Principle
+RNA is extracted from immune cells or tissues and converted to cDNA. RT-qPCR measures expression of selected immune genes.
+
+```
+Immune cells or tissue
+ ↓
+RNA extraction
+ ↓
+cDNA synthesis
+ ↓
+RT-qPCR
+ ↓
+Ct or Cq analysis
+ ↓
+Relative gene expression
+```
+
+### Example Immune Genes
+
+| Gene Group | Examples |
+| :--- | :--- |
+| **Interferon response** | IFNA, IFNB, ISG15, MX1 |
+| **Inflammatory cytokines** | IL1B, IL6, TNF |
+| **Chemokines** | CXCL10, CCL2 |
+| **T-cell markers** | CD3D, CD4, CD8A |
+| **Antiviral response** | OAS1, IFIT1, IFITM3 |
+
+### Data Interpretation
+* $\Delta Ct = Ct(\text{target}) - Ct(\text{reference})$
+* $\Delta\Delta Ct = \Delta Ct(\text{sample}) - \Delta Ct(\text{control})$
+* $\text{Relative expression} = 2^{-\Delta\Delta Ct}$
+
+### Applications
+* Viral infection studies
+* Inflammation studies
+* Immune-response profiling
+* Vaccine-response analysis
+* Transcriptomics result validation

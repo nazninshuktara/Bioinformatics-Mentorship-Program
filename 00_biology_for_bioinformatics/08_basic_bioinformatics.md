@@ -781,3 +781,328 @@ Before starting advanced bioinformatics, understand:
 
 - *Bioinformatics Algorithms* — Compeau & Pevzner
 - *Introduction to Bioinformatics* — Arthur M. Lesk
+
+---
+
+# Required Practical - Basic Bioinformatics
+
+## Practical 1 — Linux Command Line and Biological Data Organization
+
+### Aim
+To organize biological data and perform basic file operations using the Linux command line.
+
+### Key Skills
+* Navigating folders
+* Creating directories
+* Copying and moving files
+* Renaming files
+* Viewing text files
+* Searching text in files
+* File permissions concept
+* Organizing project folders
+
+### Example Project Structure
+```text
+project/
+├── raw_data/
+├── qc/
+├── reference/
+├── results/
+├── scripts/
+├── metadata/
+└── reports/
+```
+
+### Important Principles
+* Keep raw data unchanged.
+* Use clear sample names.
+* Store metadata separately.
+* Keep analysis outputs organized.
+* Record commands and software versions.
+---
+## Practical 2 — Biological Databases and Sequence Retrieval
+
+### Aim
+To retrieve DNA, RNA, protein, genome, and sequencing datasets from biological databases.
+
+### Important Databases
+
+| Database | Main Use |
+| :--- | :--- |
+| **NCBI** | Sequence data, genomes, literature, and datasets |
+| **GenBank** | Nucleotide sequences |
+| **RefSeq** | Curated reference sequences |
+| **Ensembl** | Genome and gene annotation |
+| **UniProt** | Protein sequences and function |
+| **GEO** | Gene-expression datasets |
+| **SRA** | Raw sequencing data |
+| **UCSC Genome Browser** | Genome visualization |
+
+### Key Skills
+* Search by gene name, organism, accession number, or disease.
+* Download FASTA sequence.
+* Download genome annotation.
+* Retrieve public RNA-seq or genomic datasets.
+* Record accession number and genome version.
+
+---
+
+## Practical 3 — FASTA, FASTQ, and Sequence Quality Assessment
+
+### Aim
+To understand common sequence file formats and assess raw sequencing-read quality.
+
+### FASTA Format
+FASTA stores nucleotide or protein sequences.
+```text
+>Sequence_ID
+ATGCGTACGATCGATCG
+```
+### ASTQ Format
+FASTQ stores sequencing reads and quality scores.
+```
+@READ_ID
+ACTGATCGATCGTAGCTAGC
++
+IIIIIIIIIIIIIIIIIIII
+```
+### Important FASTQ Components
+
+| Line | Content |
+| :--- | :--- |
+| **1** | Read identifier |
+| **2** | Nucleotide sequence |
+| **3** | Separator line |
+| **4** | Quality-score string |
+
+### Quality-Control Checks
+* Per-base sequence quality
+* Adapter contamination
+* GC-content distribution
+* Sequence duplication
+* Overrepresented sequences
+* Read-length distribution
+
+### Common Tools
+* FastQC
+* MultiQC
+* fastp
+* Cutadapt
+
+---
+
+## Practical 4 — Basic Sequence Analysis and BLAST
+
+### Aim
+To analyze biological sequences and identify similar sequences in public databases.
+
+### Key Sequence Analysis Concepts
+* Sequence length
+* GC content
+* AT content
+* Reverse complement
+* Open reading frame
+* Nucleotide composition
+* Protein translation concept
+
+### GC Content Formula
+$$\text{GC Content} = \frac{G + C}{\text{Total Bases}} \times 100$$
+
+### BLAST
+BLAST is used to compare a query sequence against database sequences.
+
+### Common BLAST Types
+
+| BLAST Type | Purpose |
+| :--- | :--- |
+| **BLASTn** | Nucleotide sequence against nucleotide database |
+| **BLASTp** | Protein sequence against protein database |
+| **BLASTx** | Translated nucleotide sequence against protein database |
+| **tBLASTn** | Protein sequence against translated nucleotide database |
+
+### Important BLAST Output Terms
+
+| Term | Meaning |
+| :--- | :--- |
+| **Query** | Input sequence |
+| **Subject** | Database-matched sequence |
+| **Identity** | Percentage of identical positions |
+| **Query coverage** | Fraction of query sequence aligned |
+| **E-value** | Expected number of chance matches |
+| **Bit score** | Alignment quality score |
+
+---
+
+## Practical 5 — Sequence Alignment and Phylogenetic Analysis
+
+### Aim
+To compare DNA or protein sequences and estimate their relatedness.
+
+### Types of Alignment
+
+| Type | Use |
+| :--- | :--- |
+| **Pairwise alignment** | Comparison of two sequences |
+| **Multiple sequence alignment** | Comparison of three or more sequences |
+| **Global alignment** | Alignment across the full sequence length |
+| **Local alignment** | Alignment of the most similar sequence regions |
+
+### General Workflow
+```
+Sequences
+↓
+Sequence alignment
+↓
+Alignment quality check
+↓
+Distance or similarity estimation
+↓
+Phylogenetic tree construction
+↓
+Biological interpretation
+```
+### Applications
+* Comparison of genes
+* Comparison of pathogen strains
+* Evolutionary analysis
+* Conserved-region identification
+* Species or lineage comparison
+
+### Common Tools
+* Clustal Omega
+* MUSCLE
+* MAFFT
+* MEGA
+* IQ-TREE
+
+---
+## Practical 6 — Reference Genome, Annotation Files, and Genome Browsers
+
+### Aim
+To use reference genomes, gene annotations, and genome browsers for genomic analysis.
+
+### Important File Formats
+
+| Format | Contains |
+| :--- | :--- |
+| **FASTA** | Reference DNA or protein sequence |
+| **GTF / GFF** | Gene and transcript annotation |
+| **BED** | Genomic regions or intervals |
+| **SAM / BAM** | Aligned reads |
+| **VCF** | Genetic variants |
+
+### Important Annotation Features
+* Gene
+* Transcript
+* Exon
+* Intron
+* CDS
+* UTR
+* Chromosome location
+* Strand orientation
+
+### Genome Browsers
+
+| Tool | Main Use |
+| :--- | :--- |
+| **UCSC Genome Browser** | Genome visualization and annotation |
+| **Ensembl Genome Browser** | Gene, transcript, and variant information |
+| **IGV** | Visualization of BAM files, coverage, and variants |
+
+### Important Point
+Always record the reference genome build and annotation version used in an analysis.
+
+---
+
+## Practical 7 — Read Alignment, BAM Files, and Variant Basics
+
+### Aim
+To align sequencing reads to a reference genome and understand aligned-read and variant files.
+
+### General Workflow
+```
+FASTQ reads
+↓
+Quality control
+↓
+Read alignment
+↓
+SAM or BAM file
+↓
+Sorting and indexing
+↓
+Alignment quality assessment
+↓
+Variant calling where required
+↓
+VCF file
+```
+### Important Terms
+
+| Term | Meaning |
+| :--- | :--- |
+| **Reference genome** | Standard genome sequence used for comparison |
+| **SAM** | Text alignment format |
+| **BAM** | Compressed binary alignment format |
+| **Mapping rate** | Percentage of reads aligned to the reference |
+| **Coverage** | Number of reads covering a genomic region |
+| **VCF** | File format used to store genetic variants |
+| **SNP** | Single-nucleotide change |
+| **Indel** | Small insertion or deletion |
+
+### Common Tools
+* BWA
+* Bowtie2
+* STAR
+* HISAT2
+* SAMtools
+* BCFtools
+* IGV
+
+---
+
+## Practical 8 — Basic Data Analysis, Visualization, and Reproducibility
+
+### Aim
+To analyze biological result tables, create basic figures, and maintain reproducible workflows.
+
+### Key Skills
+* Reading count tables and metadata
+* Checking missing values
+* Data filtering
+* Basic normalization concept
+* Descriptive statistics
+* Data visualization
+* Result reporting
+
+### Common Visualizations
+
+| Plot | Main Use |
+| :--- | :--- |
+| **Bar plot** | Compare values across groups |
+| **Box plot** | Compare distributions |
+| **Scatter plot** | Examine relationship between variables |
+| **Heatmap** | Display patterns across genes and samples |
+| **PCA plot** | Show sample similarity and major variation |
+| **Volcano plot** | Show fold change and statistical significance |
+
+### Reproducibility Checklist
+* Record dataset accession number.
+* Record sample metadata.
+* Record reference genome version.
+* Record annotation version.
+* Record software versions.
+* Record analysis parameters.
+* Keep scripts organized.
+* Save final figures and result tables.
+* Document the workflow.
+
+### Common Tools
+* R
+* RStudio
+* Python
+* Jupyter Notebook
+* Git
+* GitHub
+* Conda or environment-management tools
+---
