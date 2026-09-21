@@ -576,3 +576,298 @@ Common tools:
 - *Medical Microbiology* — Murray et al.
 - *Brock Biology of Microorganisms*
 - NCBI Microbial Genome Resources
+
+---
+# Required Practical - Microbilogy
+## Practical 1 — Aseptic Technique, Sterilization, and Biosafety
+
+### Aim
+
+To prevent contamination of cultures, samples, media, equipment, and the laboratory environment.
+
+### Key Topics
+
+- Hand hygiene and PPE
+- Sterile work area
+- Sterile pipette tips and tubes
+- Flame sterilization concept
+- Autoclave sterilization concept
+- Surface disinfection
+- Biosafety cabinet concept
+- Biological-waste disposal
+- Contamination prevention
+
+### Basic Workflow
+
+```text
+Prepare workspace
+ ↓
+Use appropriate PPE
+ ↓
+Disinfect work surface
+ ↓
+Use sterile materials
+ ↓
+Handle culture carefully
+ ↓
+Dispose of waste safely
+```
+---
+
+## Practical 2 — Culture Media Preparation and Sterilization
+
+### Aim
+
+To prepare sterile culture media for microbial growth.
+
+### Key Topics
+
+- Preparation of culture media
+- Dissolving media components
+- pH adjustment concept
+- Sterilization
+- Pouring agar plates
+- Labelling and storage
+
+### Types of Culture Media
+
+| Media type | Main use |
+|---|---|
+| General-purpose media | Supports growth of many non-fastidious organisms |
+| Selective media | Supports some organisms while inhibiting others |
+| Differential media | Distinguishes organisms based on visible biochemical reactions |
+| Enriched media | Supports more nutritionally demanding organisms |
+
+---
+
+## Practical 3 — Isolation of Pure Bacterial Culture
+
+### Aim
+
+To isolate individual bacterial colonies from a mixed culture.
+
+### Principle
+
+Agar plates allow individual bacterial cells or small groups of cells to grow into separate visible colonies.
+
+### Key Topics
+
+- Streak-plate method
+- Spread-plate concept
+- Pour-plate concept
+- Colony morphology
+- Isolation of pure colony
+- Culture labelling
+
+### Colony Morphology
+Observe:
+- Size
+- Shape
+- Margin
+- Elevation
+- Colour
+- Surface texture
+- Opacity
+
+### General Workflow
+```
+Mixed culture
+ ↓
+Streaking on agar plate
+ ↓
+Incubation
+ ↓
+Separate colonies
+ ↓
+Selection of isolated colony
+ ↓
+Pure culture
+```
+---
+
+## Practical 4 — Gram Staining and Microscopic Examination
+
+### Aim
+
+To differentiate bacteria into Gram-positive and Gram-negative groups.
+
+### Principle
+
+Gram staining differentiates bacteria based on cell-wall structure.
+
+- Gram-positive bacteria have a thick peptidoglycan layer.
+- Gram-negative bacteria have a thin peptidoglycan layer and an outer membrane.
+
+### Main Staining Reagents
+
+| Reagent | Role |
+|---|---|
+| Crystal violet | Primary stain |
+| Iodine | Mordant |
+| Decolorizer | Removes stain from Gram-negative cells |
+| Safranin | Counterstain |
+
+### Interpretation
+
+| Result | Appearance | General interpretation |
+|---|---|---|
+| Gram-positive | Purple | Retains crystal violet |
+| Gram-negative | Pink or red | Takes up counterstain |
+
+### Other Observations
+
+- Cocci
+- Bacilli
+- Spiral-shaped bacteria
+- Cell arrangement
+- Presence of contamination
+
+---
+
+## Practical 5 — Bacterial Growth Measurement and Growth Curve
+
+### Aim
+
+To measure bacterial growth and understand the bacterial growth curve.
+
+### Principle
+
+Bacterial growth is commonly estimated using turbidity, optical density, viable counts, or colony counts.
+
+### Growth Phases
+
+```text
+Lag phase
+ ↓
+Log phase
+ ↓
+Stationary phase
+ ↓
+Death phase
+```
+### Growth Measurement Methods
+
+| Method | What it measures |
+|---|---|
+| Optical density | Turbidity of bacterial suspension |
+| Viable plate count | Number of living bacteria able to form colonies |
+| Direct cell count | Number of cells in a sample |
+| Dry weight | Biomass measurement |
+
+### Important Factors Affecting Growth
+
+- Temperature
+- pH
+- Nutrient availability
+- Oxygen availability
+- Incubation time
+
+---
+
+## Practical 6 — Biochemical Identification of Bacteria
+
+### Aim
+
+To identify bacteria using biochemical characteristics.
+
+### Principle
+
+Different bacterial species have different metabolic enzymes and biochemical activities.
+
+### Common Tests
+
+| Test | What it indicates |
+|---|---|
+| Catalase test | Ability to break down hydrogen peroxide |
+| Oxidase test | Presence of cytochrome oxidase |
+| Indole test | Tryptophan metabolism |
+| Citrate test | Ability to use citrate as a carbon source |
+| Urease test | Ability to break down urea |
+| Carbohydrate fermentation test | Ability to ferment specific sugars |
+
+### General Workflow
+
+```text
+Pure bacterial culture
+ ↓
+Biochemical tests
+ ↓
+Observation of reactions
+ ↓
+Comparison with identification profile
+ ↓
+Probable bacterial identification
+```
+
+---
+
+## Practical 7 — Antimicrobial Susceptibility Testing
+
+### Aim
+
+To assess whether a bacterial isolate is susceptible, intermediate, or resistant to selected antimicrobial agents.
+
+### Principle
+
+Antimicrobial susceptibility testing measures bacterial growth response in the presence of antimicrobial agents.
+
+### Key Topics
+
+- Disk-diffusion method concept
+- Zone of inhibition
+- Susceptible, intermediate, and resistant categories
+- Quality control
+- Importance of standardized interpretation
+
+### Interpretation
+
+| Observation | General meaning |
+|---|---|
+| Large zone of inhibition | Greater susceptibility under standardized conditions |
+| Small or absent zone | Reduced susceptibility or resistance may be present |
+
+> Results must be interpreted according to approved laboratory standards and quality-control procedures.
+
+---
+
+## Practical 8 — Microbial DNA Extraction, 16S rRNA PCR, and Sequence Identification
+
+### Aim
+
+To identify bacteria using DNA-based methods.
+
+### Principle
+
+Bacterial DNA is extracted and a conserved genetic marker, commonly the 16S rRNA gene, can be amplified and sequenced for identification.
+
+### General Workflow
+
+```text
+Pure bacterial culture
+ ↓
+DNA extraction
+ ↓
+DNA quality assessment
+ ↓
+16S rRNA PCR
+ ↓
+Agarose gel electrophoresis
+ ↓
+PCR product purification
+ ↓
+Sanger sequencing
+ ↓
+Sequence comparison
+ ↓
+Probable bacterial identification
+```
+
+### Important Concepts
+- Bacterial genomic DNA extraction
+- PCR
+- Agarose gel electrophoresis
+- 16S rRNA gene
+- DNA sequencing
+- BLAST sequence comparison
+- Taxonomic identification
+---
