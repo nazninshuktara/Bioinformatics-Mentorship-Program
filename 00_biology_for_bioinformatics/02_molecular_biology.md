@@ -1,3 +1,5 @@
+# Molecular biology
+
 ## 1. Overview & Scope
 **Molecular biology** is the branch of biology that studies biological processes at the molecular level, particularly the structure and function of DNA, RNA, and proteins.
 
@@ -424,3 +426,714 @@ Applications: pathogen detection, mutation detection, genetic testing, cancer bi
 
 ## 25.References
 - Molecular Biology of the Cell (Alberts et al.)
+
+---
+
+# Required Practical - Molecular Biology Laboratory Techniques
+
+## Practical 1 — DNA Extraction and Purification
+
+### Aim
+
+To isolate purified genomic DNA from biological samples for downstream applications such as PCR, sequencing, genotyping, cloning, or molecular analysis.
+
+### Principle
+
+DNA extraction involves:
+
+**Cell lysis → DNA release → Removal of proteins and contaminants → DNA purification → DNA recovery**
+
+Cells and, where relevant, nuclei are disrupted to release DNA. Proteins, lipids, salts, and other contaminants are removed. The purified DNA is then recovered in nuclease-free water or an appropriate storage buffer.
+
+### Common Materials
+
+- Biological sample
+- Lysis buffer
+- Protein-removal reagent or protease
+- DNA-binding column, magnetic beads, or precipitation reagents
+- Ethanol or isopropanol, where applicable
+- Microcentrifuge tubes
+- Micropipettes and sterile tips
+- Microcentrifuge
+- Nuclease-free water or DNA storage buffer
+
+### General Workflow
+
+1. Collect the biological sample.
+2. Add lysis buffer.
+3. Disrupt cells to release nucleic acids.
+4. Remove proteins and cellular debris.
+5. Separate or bind DNA, depending on the extraction method.
+6. Wash away contaminants.
+7. Elute or resuspend purified DNA.
+8. Measure DNA concentration, purity, and integrity.
+
+### Common DNA Extraction Methods
+
+| Method | Basic concept |
+|---|---|
+| Organic extraction | Uses organic solvents to separate DNA from proteins and lipids |
+| Salt precipitation | Uses salt and alcohol to precipitate DNA |
+| Spin-column extraction | DNA binds to a silica membrane and contaminants are washed away |
+| Magnetic-bead extraction | DNA binds to magnetic beads and is purified using magnetic separation |
+
+### Important Points
+
+- Use clean tubes and tips to avoid contamination.
+- Avoid vigorous mixing if high-molecular-weight DNA is required.
+- Use appropriate storage conditions to prevent DNA degradation.
+- DNA quality should be checked before sensitive downstream assays.
+
+---
+## Practical 2 — DNA Quantification and Quality Assessment
+
+### Aim
+
+To determine DNA concentration, purity, and integrity.
+
+### Principle
+
+Nucleic acids absorb ultraviolet light strongly at approximately 260 nm. Absorbance-based instruments estimate nucleic acid concentration and provide purity ratios.
+
+### Important Parameters
+
+| Parameter | Meaning |
+|---|---|
+| DNA concentration | Amount of DNA, commonly expressed as ng/µL |
+| A260/A280 | Indicates possible protein contamination |
+| A260/A230 | Indicates possible contamination from salts, phenol, carbohydrates, or extraction reagents |
+| DNA integrity | Indicates whether DNA is intact or degraded |
+
+### General Interpretation
+
+- Purified double-stranded DNA commonly has an **A260/A280 ratio near 1.8**.
+- RNA commonly has an **A260/A280 ratio near 2.0**.
+- An **A260/A230 ratio around 2.0–2.2** is generally desirable.
+
+Low ratios do not prove one specific contaminant, but they can indicate that the sample requires further purification or careful interpretation.
+
+### Methods
+
+| Method | Use |
+|---|---|
+| NanoDrop or spectrophotometer | Estimates concentration and purity ratios |
+| Qubit or fluorometer | More specific concentration measurement, especially for low-concentration samples |
+| Agarose gel electrophoresis | Assesses DNA size and integrity |
+
+### General Procedure
+
+1. Prepare the instrument.
+2. Blank it with the same buffer used for the DNA sample.
+3. Load the DNA sample.
+4. Record concentration, A260/A280, and A260/A230.
+5. Assess integrity by gel electrophoresis if required.
+6. Decide whether the DNA is suitable for the planned downstream application.
+
+---
+## Practical 3 — Agarose Gel Electrophoresis
+
+### Aim
+
+To separate DNA fragments by size and visualize DNA bands.
+
+### Principle
+
+DNA has a negatively charged phosphate backbone. In an electric field, DNA migrates toward the positive electrode.
+
+The agarose gel acts as a molecular sieve:
+
+- Smaller DNA fragments generally move faster.
+- Larger DNA fragments generally move more slowly.
+
+### Materials
+
+- Agarose
+- Running buffer
+- DNA samples
+- DNA ladder
+- Loading dye
+- Electrophoresis chamber
+- Power supply
+- DNA stain or visualization system
+
+### General Workflow
+
+**Prepare gel → Load DNA ladder and samples → Run electrophoresis → Visualize bands → Interpret results**
+
+### Role of Important Components
+
+| Component | Role |
+|---|---|
+| Agarose | Forms a porous matrix for separating DNA fragments |
+| DNA ladder | Contains fragments of known sizes for estimating unknown DNA size |
+| Loading dye | Helps track sample loading and migration |
+| Running buffer | Provides ions needed for electrical current and maintains pH |
+| DNA stain | Allows DNA bands to be visualized |
+
+### Band Interpretation
+
+| Observation | Possible interpretation |
+|---|---|
+| Clear single band | Expected DNA fragment or specific PCR product |
+| Multiple bands | Non-specific amplification, mixed template, or multiple DNA products |
+| Smear | Degraded DNA, overloading, contamination, or unsuitable run conditions |
+| Very faint band | Low DNA concentration or poor detection |
+| No band | No DNA, failed PCR, loading problem, or detection issue |
+
+---
+## Practical 4 — Polymerase Chain Reaction (PCR)
+
+### Aim
+
+To amplify a specific DNA sequence.
+
+### Principle
+
+PCR is an *in vitro* method used to produce many copies of a defined DNA region.
+
+The three main stages are:
+
+**Denaturation → Annealing → Extension**
+
+Repeated cycles produce exponential amplification of the target region.
+
+### Main Components
+
+| Component | Role |
+|---|---|
+| Template DNA | Contains the target sequence |
+| Forward primer | Defines one boundary of the target region |
+| Reverse primer | Defines the opposite boundary of the target region |
+| DNA polymerase | Synthesizes new DNA strands |
+| dNTPs | Building blocks for DNA synthesis |
+| Mg²⁺ | Required cofactor for polymerase activity |
+| Reaction buffer | Maintains appropriate chemical conditions |
+| Nuclease-free water | Adjusts final reaction volume |
+
+### PCR Cycle
+
+1. **Denaturation**  
+   Double-stranded DNA separates into single strands.
+
+2. **Annealing**  
+   Primers bind to complementary sequences on the template DNA.
+
+3. **Extension**  
+   DNA polymerase extends from the primers and synthesizes new DNA.
+
+### PCR Controls
+
+| Control | Purpose |
+|---|---|
+| Positive control | Confirms that the PCR system can amplify a known target |
+| No-template control | Detects possible reagent contamination |
+| Negative control | Helps identify non-specific or unwanted amplification |
+
+### Applications
+
+- Detection of DNA sequences
+- Genotyping
+- Cloning
+- Pathogen detection
+- Mutation analysis
+- DNA sequencing preparation
+
+---
+## Practical 5 — Primer Design and PCR Troubleshooting
+
+### Primer Design Basics
+
+Primers are short DNA sequences that determine which region will be amplified by PCR.
+
+A good primer pair should have:
+
+- Target specificity
+- Suitable primer length
+- Similar melting temperatures
+- Balanced GC content
+- Minimal self-complementarity
+- Minimal primer-dimer potential
+- Appropriate expected amplicon size
+
+### Common PCR Problems
+
+| Problem | Possible cause |
+|---|---|
+| No band | Poor template quality, missing reagent, unsuitable primers, incorrect cycling conditions, or PCR inhibition |
+| Multiple bands | Low annealing temperature, poor primer specificity, excessive template, or excessive cycle number |
+| Primer-dimer | Primers anneal to each other and form a short non-specific product |
+| Smearing | Poor template quality, too much template, non-specific amplification, or unsuitable conditions |
+| Weak band | Low template amount, inefficient amplification, or insufficient detection |
+
+### General Troubleshooting Strategy
+
+1. Check positive and no-template controls.
+2. Verify template quality and amount.
+3. Confirm primer sequence and expected amplicon size.
+4. Review primer concentration.
+5. Optimize annealing conditions.
+6. Check reaction components and thermal cycling parameters.
+7. Confirm that the correct PCR product is being assessed on a gel.
+
+---
+## Practical 6 — PCR Product Purification and Gel Extraction
+
+### Aim
+
+To purify a PCR product or recover a specific DNA band from an agarose gel.
+
+### Principle
+
+PCR cleanup removes unwanted reaction components, such as:
+
+- Primers
+- dNTPs
+- Enzymes
+- Salts
+- Small non-specific products
+
+Gel extraction allows recovery of a DNA fragment of the desired size after gel electrophoresis.
+
+### Workflow
+
+**PCR product → Cleanup or gel separation → DNA purification → Purified DNA**
+
+### Applications
+
+- Sanger sequencing
+- Cloning
+- Restriction digestion
+- Ligation
+- Template preparation for downstream assays
+
+### Important Considerations
+
+- Select the correct target band.
+- Avoid contamination from nearby bands.
+- Confirm DNA concentration after purification.
+- Use purified DNA promptly or store it appropriately.
+
+---
+## Practical 7 — RNA Extraction, Quantification, and Quality Assessment
+
+### Aim
+
+To isolate high-quality RNA from biological samples.
+
+### Principle
+
+RNA extraction involves:
+
+**Cell lysis → RNA release → Removal of contaminants → RNA purification → RNA recovery**
+
+RNA is highly susceptible to degradation by RNases. Therefore, careful RNase-free technique is essential.
+
+### Materials
+
+- Biological sample
+- RNA extraction reagent or kit
+- RNase-free tubes
+- RNase-free pipette tips
+- Clean gloves
+- Centrifuge
+- RNA storage solution
+- DNase treatment reagent, where appropriate
+
+### General Workflow
+
+**Sample → Cell lysis → RNA release → Contaminant removal → RNA purification → RNA quality assessment**
+
+### RNA Quality Assessment
+
+| Parameter | Importance |
+|---|---|
+| Concentration | Determines amount available for downstream analysis |
+| Purity | Indicates possible contamination |
+| Integrity | Indicates whether RNA is degraded |
+| Genomic DNA contamination | Can interfere with RT-PCR and RT-qPCR |
+
+### Important Precautions
+
+- Use RNase-free tubes and pipette tips.
+- Keep samples cold where appropriate.
+- Avoid repeated freeze-thaw cycles.
+- Wear clean gloves.
+- Maintain a clean RNase-free workspace.
+- Use DNase treatment when genomic DNA contamination is a concern.
+
+### Applications
+
+- cDNA synthesis
+- RT-PCR
+- RT-qPCR
+- RNA sequencing
+- Gene-expression analysis
+
+---
+## Practical 8 — cDNA Synthesis / Reverse Transcription
+
+### Aim
+
+To convert RNA into complementary DNA, or cDNA.
+
+### Principle
+
+**RNA → cDNA**
+
+The enzyme **reverse transcriptase** synthesizes cDNA using RNA as a template.
+
+### Main Components
+
+- RNA template
+- Reverse transcriptase
+- Primers
+- dNTPs
+- Reaction buffer
+- Nuclease-free water
+
+### Primer Types for Reverse Transcription
+
+| Primer type | General use |
+|---|---|
+| Oligo(dT) primers | Bind to poly(A) tails of many eukaryotic mRNAs |
+| Random primers | Can generate cDNA from many RNA regions |
+| Gene-specific primers | Used when cDNA is needed for a specific RNA target |
+
+### Workflow
+
+**RNA → Reverse transcription → cDNA → PCR or RT-qPCR**
+
+### Importance
+
+PCR amplifies DNA templates. Therefore, RNA is first converted into cDNA before PCR-based gene-expression analysis.
+
+---
+## Practical 9 — End-point RT-PCR
+
+### Aim
+
+To detect RNA-derived targets after reverse transcription and conventional PCR.
+
+### Principle
+
+End-point RT-PCR involves:
+
+**RNA → cDNA → Conventional PCR → Agarose gel electrophoresis**
+
+The amplified product is assessed at the end of the reaction, usually by gel electrophoresis.
+
+### Applications
+
+- Detection of transcript presence
+- RNA-virus detection concept
+- Confirmation of gene expression
+- Molecular diagnostics concept
+
+### Difference Between End-point RT-PCR and RT-qPCR
+
+| End-point RT-PCR | RT-qPCR |
+|---|---|
+| Product is assessed after amplification | Fluorescence is measured during amplification |
+| Usually gel-based | Real-time fluorescence-based |
+| Mainly qualitative or semi-quantitative | Can support quantitative analysis |
+
+---
+
+## Practical 10 — RT-qPCR / Real-Time PCR and Data Interpretation
+
+### Aim
+
+To detect and quantify nucleic acid amplification in real time.
+
+### Principle
+
+qPCR measures fluorescence during DNA amplification.
+
+**Target DNA increases → Fluorescence increases**
+
+For RNA expression studies:
+
+**RNA → cDNA → Real-time PCR = RT-qPCR**
+
+### Ct or Cq Value
+
+Ct or Cq is the cycle at which fluorescence crosses a defined threshold.
+
+- Lower Ct or Cq generally indicates more starting target.
+- Higher Ct or Cq generally indicates less starting target.
+
+This interpretation requires proper assay performance and suitable controls.
+
+### Important Controls
+
+| Control | Purpose |
+|---|---|
+| No-template control | Detects reagent contamination |
+| No-RT control | Detects possible genomic DNA contamination |
+| Technical replicate | Assesses technical consistency |
+| Reference gene | Normalizes variation in input and reaction handling |
+
+### Relative Gene-Expression Analysis
+
+**ΔCt = Ct(target) − Ct(reference)**
+
+**ΔΔCt = ΔCt(sample) − ΔCt(control)**
+
+**Relative expression = 2⁻ΔΔCt**
+
+The 2⁻ΔΔCt method is appropriate when target and reference-gene amplification efficiencies are sufficiently similar and the reference gene is stable under the experimental condition.
+
+### Melt Curve
+
+A melt curve helps assess whether amplification is consistent with a specific product in dye-based qPCR assays.
+
+---
+## Practical 11 — Restriction Digestion
+
+### Aim
+
+To cut DNA at specific recognition sequences using restriction enzymes.
+
+### Principle
+
+Restriction enzymes are endonucleases that recognize specific DNA sequences and cleave DNA at or near those sequences.
+
+### Types of DNA Ends
+
+| End type | Description |
+|---|---|
+| Sticky ends | Short single-stranded overhangs that can base-pair with complementary ends |
+| Blunt ends | DNA ends without single-stranded overhangs |
+
+### Workflow
+
+**DNA + Restriction enzyme → Incubation → DNA fragments → Gel electrophoresis**
+
+### Applications
+
+- DNA cloning
+- Plasmid verification
+- Recombinant DNA construction
+- DNA fragment analysis
+
+---
+
+## Practical 12 — DNA Ligation
+
+### Aim
+
+To join DNA fragments together.
+
+### Principle
+
+DNA ligase joins DNA fragments by forming phosphodiester bonds in the sugar-phosphate backbone.
+
+### Workflow
+
+**Vector + Insert → DNA ligase → Recombinant plasmid**
+
+### Key Concepts
+
+| Component | Role |
+|---|---|
+| Vector | DNA molecule that carries the insert |
+| Insert | DNA fragment of interest |
+| DNA ligase | Enzyme that joins DNA fragments |
+| Compatible ends | Ends that allow vector and insert to join efficiently |
+
+### Applications
+
+- Molecular cloning
+- Plasmid construction
+- Recombinant protein production
+- Genetic engineering
+
+---
+
+## Practical 13 — Bacterial Transformation and Antibiotic Selection
+
+### Aim
+
+To introduce plasmid DNA into competent bacterial cells.
+
+### Principle
+
+Transformation is the uptake of external DNA by bacterial cells.
+
+### General Workflow
+
+**Competent cells → Plasmid DNA → DNA uptake → Recovery → Antibiotic selection → Colonies**
+
+### Antibiotic Selection
+
+Many plasmids contain an antibiotic-resistance marker.
+
+Under the correct selective condition:
+
+- Cells carrying the plasmid are expected to grow.
+- Cells without the plasmid are expected not to grow.
+
+### Applications
+
+- Plasmid propagation
+- Cloning
+- Recombinant protein expression
+- Genetic engineering
+
+---
+
+## Practical 14 — Colony PCR
+
+### Aim
+
+To screen bacterial colonies for the presence of a desired DNA insert.
+
+### Principle
+
+PCR is performed using colony material or colony-derived material as the DNA source.
+
+### Workflow
+
+**Bacterial colony → Colony PCR → Gel electrophoresis → Band analysis → Candidate positive clone**
+
+### Interpretation
+
+| Result | Interpretation |
+|---|---|
+| Expected-size band | Candidate positive colony |
+| No expected band | Candidate negative colony or failed reaction |
+| Incorrect-size band | Possible non-specific product or incorrect construct |
+
+A colony PCR result identifies candidate clones. Final confirmation may require plasmid isolation, restriction analysis, or Sanger sequencing.
+
+---
+
+## Practical 15 — Plasmid DNA Isolation / Miniprep
+
+### Aim
+
+To isolate plasmid DNA from bacterial cells.
+
+### Principle
+
+A common plasmid isolation method uses **alkaline lysis**.
+
+Bacterial cells are lysed. During neutralization and clarification, chromosomal DNA, proteins, and cellular debris are separated from plasmid DNA. The plasmid DNA is then purified.
+
+### Workflow
+
+**Bacterial culture → Cell harvesting → Alkaline lysis → Neutralization → Clarification → Plasmid purification → Plasmid DNA**
+
+### Quality Assessment
+
+- Plasmid concentration
+- Purity ratios
+- Agarose gel profile
+- Restriction digestion pattern
+- Sequencing confirmation
+
+### Applications
+
+- Restriction digestion
+- Ligation
+- Transformation
+- Sanger sequencing
+- Recombinant protein expression
+
+---
+
+## Practical 16 — Plasmid Verification
+
+### Aim
+
+To confirm that a plasmid contains the expected insert.
+
+### Common Verification Methods
+
+| Method | What it can show |
+|---|---|
+| Colony PCR | Presence of candidate insert |
+| Restriction digestion | Expected fragment pattern and approximate insert size |
+| Agarose gel electrophoresis | DNA fragment pattern |
+| Sanger sequencing | Exact nucleotide sequence and insert orientation |
+
+### Workflow
+
+**Candidate colony → Miniprep → Restriction analysis or PCR → Gel electrophoresis → Sequencing confirmation**
+
+### Important Point
+
+A correct band size does not guarantee that the full sequence is correct. Sanger sequencing is commonly used for final confirmation.
+
+---
+
+## Practical 17 — Sanger DNA Sequencing
+
+### Aim
+
+To determine the nucleotide sequence of a DNA fragment.
+
+### Principle
+
+Sanger sequencing uses chain termination by modified nucleotides called **ddNTPs**.
+
+When a ddNTP is incorporated, DNA extension stops because it lacks the 3′-OH group needed for further DNA synthesis.
+
+### Important Components
+
+- Template DNA
+- Sequencing primer
+- DNA polymerase
+- dNTPs
+- Fluorescently labelled ddNTPs
+
+### Result
+
+The sequencing instrument produces a **chromatogram** or **electropherogram**.
+
+Each peak represents one nucleotide base.
+
+### Applications
+
+- Plasmid verification
+- PCR-product verification
+- Mutation confirmation
+- Insert orientation confirmation
+- Small-scale DNA sequence analysis
+
+---
+
+## Practical 18 — Basic Next-Generation Sequencing Workflow
+
+### Principle
+
+Next-generation sequencing, or NGS, refers to high-throughput sequencing technologies that generate a very large number of DNA or RNA sequence reads in parallel.
+
+### Basic Workflow
+
+**Sample → DNA/RNA extraction → Quality assessment → Library preparation → Adapter addition → Sequencing → FASTQ files → Quality control → Alignment or quantification → Downstream analysis**
+
+### Important Terms
+
+| Term | Meaning |
+|---|---|
+| Library | Prepared DNA or cDNA fragments suitable for sequencing |
+| Adapter | Short sequence added during library preparation for sequencing and sample identification |
+| Index or barcode | Sequence used to distinguish samples in pooled sequencing runs |
+| Read | Sequence generated by a sequencing instrument |
+| FASTQ | File format containing nucleotide sequences and per-base quality scores |
+| Phred score | Numerical estimate of base-calling quality |
+| Quality control | Assessment of read quality before analysis |
+| Alignment | Mapping reads to a reference genome or sequence |
+| Quantification | Estimating abundance of genes, transcripts, or DNA targets |
+| Variant calling | Identifying sequence variants in DNA sequencing data |
+
+### Common NGS Applications
+
+- Whole-genome sequencing
+- Targeted sequencing
+- Amplicon sequencing
+- RNA-seq
+- Metagenomics
+- Variant detection
+- Gene-expression profiling
