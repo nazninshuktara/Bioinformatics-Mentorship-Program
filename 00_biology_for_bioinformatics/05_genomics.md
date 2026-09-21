@@ -611,3 +611,403 @@ Applications:
 - *Bioinformatics Data Skills* — Vince Buffalo
 - *Human Molecular Genetics* — Strachan & Read
 - NCBI Genome Resources
+
+
+---
+
+# Required Practical - Genomics
+
+## Practical 1 — Genomic DNA Extraction and Quality Assessment
+
+### Aim
+
+To isolate high-quality genomic DNA suitable for sequencing and genomics analysis.
+
+### Principle
+
+Genomic DNA extraction involves:
+
+**Cell lysis → DNA release → Removal of proteins and contaminants → DNA purification → DNA quality assessment**
+
+High-quality DNA is needed for whole-genome sequencing, targeted sequencing, variant analysis, and genome assembly.
+
+### Materials
+
+- Biological sample
+- DNA extraction reagent or kit
+- Lysis buffer
+- Protein-removal reagent
+- Microcentrifuge tubes
+- Micropipettes and tips
+- Centrifuge
+- Nuclease-free water or DNA storage buffer
+- NanoDrop or Qubit
+- Agarose gel electrophoresis system
+
+### General Workflow
+
+1. Collect the biological sample.
+2. Lyse cells to release DNA.
+3. Remove proteins, RNA, and contaminants where appropriate.
+4. Purify genomic DNA.
+5. Elute or resuspend DNA.
+6. Measure DNA concentration and purity.
+7. Assess DNA integrity using agarose gel electrophoresis if required.
+
+### Quality Assessment
+
+| Parameter | Importance |
+|---|---|
+| DNA concentration | Determines whether enough DNA is available for library preparation |
+| A260/A280 ratio | Indicates possible protein contamination |
+| A260/A230 ratio | Indicates possible reagent or salt contamination |
+| DNA integrity | Indicates whether DNA is intact or degraded |
+
+---
+
+## Practical 2 — Whole-Genome Sequencing Library Preparation
+
+### Aim
+
+To convert genomic DNA into a sequencing-ready library.
+
+### Principle
+
+Library preparation converts genomic DNA into DNA fragments compatible with a sequencing platform.
+
+### General Workflow
+
+```text
+Genomic DNA
+ ↓
+DNA fragmentation
+ ↓
+End repair
+ ↓
+Adapter ligation
+ ↓
+Indexing or barcoding
+ ↓
+Library amplification where required
+ ↓
+Library quality control
+ ↓
+Sequencing-ready library
+```
+### Important Steps
+- DNA fragmentation
+- End repair
+- Adapter ligation
+- Indexing or barcoding
+- Library amplification
+- Library quantification
+- Fragment-size assessment
+- Sample pooling where appropriate
+
+### Important Terms
+|Term	| Meaning |
+|Library | Prepared DNA fragments suitable for sequencing |
+|Adapter | Short DNA sequence added for sequencing |
+|Index or barcode | Sequence used to distinguish samples in a pooled run |
+|Paired-end sequencing | Both ends of a DNA fragment are sequenced |
+|Coverage |	Average number of sequencing reads covering a genomic region |
+
+
+## Practical 3 — Sequencing Data Retrieval and Raw Read Quality Control
+
+### Aim
+To organize raw sequencing data and assess read quality before analysis.
+
+### Principle
+Sequencing instruments generate raw reads, commonly stored in FASTQ files. Read quality must be checked before alignment, assembly, or variant calling.
+
+### FASTQ File Content
+A FASTQ record includes:
+1. Sequence identifier
+2. Nucleotide sequence
+3. Separator line
+4. Per-base quality score
+
+### Quality-Control Checks
+- Per-base quality score
+- Read-length distribution
+- Adapter contamination
+- GC-content distribution
+- Sequence duplication
+- Overrepresented sequences
+- Total number of reads
+
+### Common Tools
+| Tool | Use |
+| FastQC |	Quality control for individual FASTQ files | |
+| MultiQC |	Combined quality-control summary for multiple samples
+| fastp |	Read filtering and quality control |
+| Cutadapt | Adapter trimming |
+
+
+### General Workflow
+
+```
+FASTQ files
+ ↓
+FastQC
+ ↓
+MultiQC summary
+ ↓
+Adapter and quality assessment
+ ↓
+Read trimming or filtering if required
+ ↓
+Post-trimming quality control
+```
+---
+
+## Practical 4 — Read Alignment and Alignment Quality Assessment
+
+### Aim
+To align sequencing reads to a reference genome and assess alignment quality.
+
+### Principle
+Read alignment maps sequencing reads to a known reference genome.
+This is commonly used for:
+- Human genome analysis
+- Pathogen genome analysis
+- Variant calling
+- Targeted sequencing analysis
+
+### General Workflow
+
+```
+Quality-controlled reads
+ ↓
+Reference genome preparation
+ ↓
+Read alignment
+ ↓
+SAM or BAM file generation
+ ↓
+Sorting and indexing
+ ↓
+Alignment quality assessment
+
+```
+
+### Important Terms
+| Term |	Meaning |
+| Reference genome |	Standard genome sequence used for comparison |
+| SAM |	Text-based alignment format |
+| BAM |	Compressed binary alignment format |
+| Mapping rate |	Percentage of reads aligned to the reference |
+| Coverage |	Number of reads covering a genomic position |
+| Depth | Sequencing coverage at a specific location |
+
+
+### Common Tools
+| Tool |	Use |
+| BWA	| DNA-sequence alignment |
+| Bowtie2	| Short-read alignment |
+| SAMtools |	BAM/SAM processing and statistics |
+| IGV	| Alignment visualization |
+
+---
+
+## Practical 5 — Genome Assembly and Assembly Quality Assessment
+
+### Aim
+To reconstruct a genome sequence from sequencing reads.
+
+### Principle
+Genome assembly combines sequencing reads into longer DNA sequences.
+
+### Assembly Approaches
+
+| Approach |	Description |
+| Reference-based assembly |	Reads are aligned to an existing reference genome |
+| De novo assembly |	Genome is assembled without a reference genome |
+
+
+### General Workflow
+```
+Quality-controlled reads
+ ↓
+Genome assembly
+ ↓
+Contigs
+ ↓
+Scaffolds where applicable
+ ↓
+Assembly quality assessment
+ ↓
+Genome annotation
+```
+
+### Important Terms
+
+| Term | Meaning |
+|---|---|
+| Contig | Continuous DNA sequence assembled from reads |
+| Scaffold | Ordered or linked group of contigs |
+| N50 | Assembly-contiguity metric |
+| Coverage | Amount of sequence data supporting an assembly |
+| Assembly quality | Completeness, contiguity, and possible error assessment |
+
+### Common Tools
+
+| Tool | Use |
+|---|---|
+| SPAdes | De novo genome assembly |
+| Flye | Long-read genome assembly |
+| QUAST | Assembly-quality assessment |
+| Bandage | Assembly-graph visualization |
+
+---
+
+## Practical 6 — Variant Calling, Filtering, and Annotation
+
+### Aim
+To identify genomic variants between a sample and a reference genome.
+
+### Principle
+Variant calling identifies DNA differences between sequencing reads and a reference genome.
+
+### General Workflow
+```
+Aligned reads
+ ↓
+Variant calling
+ ↓
+VCF file
+ ↓
+Variant filtering
+ ↓
+Variant annotation
+ ↓
+Biological interpretation
+```
+
+### Major Variant Types
+
+| Variant type | Description |
+|---|---|
+| SNP | Single-nucleotide change |
+| Indel | Small insertion or deletion |
+| CNV | Copy-number gain or loss |
+| Structural variant | Large deletion, duplication, inversion, or translocation |
+
+### Variant Annotation
+
+Annotation helps determine whether a variant is located in:
+
+- Coding region
+- Non-coding region
+- Splice site
+- Regulatory region
+- Known disease-associated gene
+
+### Common Tools
+
+| Tool | Use |
+|---|---|
+| GATK | Variant calling and filtering |
+| SAMtools / BCFtools | Variant analysis |
+| VEP | Variant-effect prediction |
+| ANNOVAR | Variant annotation |
+| IGV | Visual inspection of variants |
+
+---
+
+## Practical 7 — Comparative Genomics and Phylogenetic Analysis
+
+### Aim
+To compare genome sequences and investigate genetic relationships among organisms, strains, or isolates.
+
+### Principle
+Comparative genomics identifies similarities and differences between genomes.
+Phylogenetic analysis uses sequence variation to estimate evolutionary relationships.
+
+###General Workflow
+```
+Genome sequences or variants
+ ↓
+Sequence alignment
+ ↓
+Identification of genetic differences
+ ↓
+Phylogenetic tree construction
+ ↓
+Interpretation of relatedness
+```
+
+###Applications
+- Comparison of pathogen strains
+- Outbreak investigation
+- Evolutionary studies
+- Identification of conserved genes
+- Detection of lineage-specific mutations
+
+### Important Terms
+| Term	| Meaning
+| Homologous genes	| Genes related through common ancestry |
+| Conserved region	| DNA sequence retained across organisms |
+| Phylogenetic tree	| Diagram showing inferred evolutionary relationships |
+| Lineage	| Group of related organisms sharing common ancestry |
+| Genetic distance	| Estimate of sequence difference between samples |
+
+---
+
+## Practical 8 — Pathogen Genomics, AMR Detection, and Genomic Surveillance
+
+### Aim
+To use genome sequencing data for pathogen identification, antimicrobial-resistance analysis, and outbreak surveillance.
+
+###Principle
+Pathogen genomics compares microbial genome data with reference genomes and curated databases.
+
+### General Workflow
+```
+Pathogen sample
+ ↓
+DNA or RNA extraction
+ ↓
+Sequencing
+ ↓
+Read quality control
+ ↓
+Alignment or genome assembly
+ ↓
+Variant and lineage analysis
+ ↓
+AMR gene or mutation detection
+ ↓
+Phylogenetic interpretation
+ ↓
+Surveillance report
+```
+
+### Antimicrobial Resistance Analysis
+
+Resistance may arise through:
+- Chromosomal mutations
+- Acquisition of resistance genes
+- Plasmids
+- Transposons
+- Integrons
+
+###Common AMR Resources
+| Resource	| Use |
+| CARD	| Antibiotic-resistance gene database |
+| ResFinder	| Resistance-gene identification |
+| NCBI AMRFinderPlus	| AMR gene and mutation analysis |
+
+
+### Applications
+- Pathogen identification
+- Outbreak investigation
+- Variant surveillance
+- Tracking transmission
+- Monitoring antimicrobial-resistance genes
+- Comparing pathogen isolates
+
+### Important Note
+Genomic findings must be interpreted with sample quality, sequencing coverage, laboratory information, clinical context, and relevant surveillance guidelines.
+---
