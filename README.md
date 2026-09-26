@@ -3,7 +3,6 @@
 A structured learning repository documenting my journey in **Bioinformatics Mentorship Program** under the guidance of **[Md. Jubayer Hossain](https://github.com/hossainlab)**.
 
 This repository contains my **learning notes, R and Python scripts, Bash commands, analysis workflows, exercises, figures, and research-oriented projects** developed throughout this program.
-
 The goal is to build a strong foundation in computational biology while developing practical skills for **reproducible and research-oriented bioinformatics analysis**.
 
 ---
@@ -64,7 +63,7 @@ Bioinformatics-Mentorship-Program/
 
 ## 📅 12-Week Interactive Roadmap & Progress Tracker
 
-### 🧬 Phase 1: Computational Foundation, Basic Unix commands & Programming Fundamentals
+### 🧬 Phase 1: Computational Foundation & Programming
 | Week | Session Topic | Tools | Learning Notes |
 | :---: | :--- | :---: | :---: |
 | **Week 1** | Bioinformatics Workflow Setup & CLI Tools for Omics Data Science | Conda / Linux | [Day1](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_1/learning_guide.md), [Day2](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_2/learning_guide.md)|
@@ -124,7 +123,6 @@ Bioinformatics-Mentorship-Program/
 * GEO
 * Ensembl
 * UCSC Genome Browser
-* Bioconductor
 * Sequence and genomic databases
 
 ### Data Analysis
@@ -138,7 +136,7 @@ Bioinformatics-Mentorship-Program/
 * Data visualization
 * Reproducible workflows
 
-### Future Areas
+### Advanced Topics
 
 * Single-cell RNA-seq
 * Spatial transcriptomics
@@ -163,7 +161,7 @@ The long-term goal of this mentorship is to develop the ability to independently
 ---
 
 ## 👥 Acknowledgements
-I would like to express my sincere gratitude to my mentor, **[Md. Jubayer Hossain](https://github.com/hossainlab)**, for his exceptional guidance, structured curriculum, and constant support throughout this Mentorship Program. This repository is a reflection of the knowledge and skills gained under his supervision.
+I would like to express my sincere gratitude to my mentor, **[Md. Jubayer Hossain](https://github.com/hossainlab)**, for his guidance, structured curriculum, and constant support throughout this Mentorship Program. This repository is a reflection of the knowledge and skills gained under his supervision.
 * **Affiliations:** Founder @chiralbd | CEO @deepbioltd | Program Lead @gsabioinfointernship
 * **Program Duration:** 12 Weeks (July 2026 - September 2026)
 
@@ -184,4 +182,4 @@ Biotechnology | Bioinformatics | Computational Biology | Biological Data Analysi
 
 ## 📄 License
 
-This project is licensed under the [**MIT License**](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program?tab=MIT-1-ov-file).
+This project is licensed under the [**MIT License**](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/LICENSE).
