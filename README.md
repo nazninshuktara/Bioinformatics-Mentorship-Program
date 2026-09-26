@@ -1,29 +1,65 @@
 # 💻 Bioinformatics-Mentorship-Program
-Learning journey, notes, insights, codes and pipelines under the **Bioinformatics Mentorship Program** mentored by **[Md. Jubayer Hossain](https://github.com/hossainlab)**.
 
-This program covers a comprehensive dry-lab track moving from core computational fundamentals to advanced transcriptomics, spatial biology, and deep learning in drug discovery.
+A structured learning repository documenting my journey in **Bioinformatics Mentorship Program** under the guidance of **[Md. Jubayer Hossain](https://github.com/hossainlab)**.
+
+This repository contains my **learning notes, R and Python scripts, Bash commands, analysis workflows, exercises, figures, and research-oriented projects** developed throughout this program.
+The goal is to build a strong foundation in computational biology while developing practical skills for **reproducible and research-oriented bioinformatics analysis**.
+
+---
 
 ## 🎯 Program Objectives
 
-* **Master Dry Lab Workflows:** Develop hands-on expertise in workflows tailored for infectious disease research.
-* **NGS Data Analytics:** Learn end-to-end Next-Generation Sequencing (NGS) data analytics, specifically focusing on Bulk and Single-Cell RNA-Seq.
-* **Computational Proficiency:** Gain strong proficiency in Linux (Bash), R, and Python for biological data processing and visualization.
+Through this mentorship program, I aim to:
 
-## 🛠️ Tech Stack & Core Tools Learned
-* **Languages:** Bash (Linux Terminal), Python, R
-* **Bulk Transcriptomics:** FastQC, MultiQC, Trimmomatic/Cutadapt, STAR/HISAT2, featureCounts, DESeq2, EdgeR
-* **Single-Cell & Spatial:** Seurat / Scanpy, Harmony
-* **Advanced:** Deep Learning (PyTorch/TensorFlow frameworks for Genomics & Drug Discovery)
+* Build a strong foundation in molecular biology and bioinformatics
+* Develop proficiency in **Linux/Bash**
+* Learn **R and Python** for biological data analysis
+* Analyze high-throughput sequencing data
+* Perform **bulk RNA-seq analysis**
+* Conduct differential gene expression analysis
+* Perform pathway and functional enrichment analysis
+* Work with publicly available biological datasets
+* Develop skills in **single-cell RNA-seq**
+* Explore **spatial transcriptomics**
+* Apply machine learning approaches to biological data
+* Build reproducible and well-documented bioinformatics workflows
+
+---
 
 ## 📂 Repository Structure
 As I progress through the sessions, the scripts and markdown notes will be organized as follows:
-* `00_basic_biology`: Notes on Central Dogma, Genomics basics, etc.
-* `01_foundations`: Bash scripts, installation configurations, Unix exercises, file management, and server basics.
-* `02_programming`: Python scripts and Jupyter notebooks for basic data manipulation.
-* `03_bulk_rnaseq`: Custom R scripts for `DESeq2`, heatmaps, and pathway enrichment analysis files.
-* `04_single_cell`: Single-cell standard workflow, data cleaning and cell clustering files.
-* `05_deep_learning`: Models and code testing for target identification and drug modeling.
 
+```text
+Bioinformatics-Mentorship-Program/
+│
+├── 00_biology_for_bioinformatics/
+│   └── Biology & bioinformatics concepts with required practical notes
+│
+├── 01_Bioinformatics_foundations/
+│   └── Linux, Bash scripts, Unix exercises, databases, server basics and tools
+│
+├── 02_programming_for_bioinformatics/
+│   ├── R
+│   └── Python
+│ 
+├── 03_bulk_rnaseq_analysis/
+│   ├── Custom R scripts for `DESeq2`, heatmaps
+│   └── pathway enrichment analysis files
+│
+├── 04_single_cell_analysis/
+│   ├── Single-cell standard workflow
+│   ├── data cleaning
+│   └── cell clustering files
+│
+├── 05_deep_learning/
+│   └── Models and code testing for target identification and drug modeling
+│
+├── README.md
+├── LICENSE
+├── .gitignore
+└── Bioinformatics-Mentorship-Program.Rproj
+```
+---
 
 ## 📅 12-Week Interactive Roadmap & Progress Tracker
 
@@ -55,11 +91,96 @@ As I progress through the sessions, the scripts and markdown notes will be organ
 | **Week 11**| Deep Learning: Single-Cell Genomics Applications & Drug Discovery | PyTorch | ⏳ Pending |
 | **Week 12**| In Silico Toxicology Modelling & Wrap-up (Road to Publication) | PyTorch | ⏳ Pending |
 
+> The roadmap will be updated as the mentorship progresses.
+
+---
+
+## 🛠️ Tools & Technologies
+
+### Programming & Computing
+
+* R
+* RStudio
+* Python
+* Bash
+* Linux
+* Git & GitHub
+
+### R / Bioconductor
+
+* Bioconductor
+* DESeq2
+* ggplot2
+* dplyr
+* tidyr
+* readr
+* ComplexHeatmap
+* clusterProfiler
+
+### Bioinformatics
+
+* NCBI
+* GEO
+* Ensembl
+* UCSC Genome Browser
+* Bioconductor
+* Sequence and genomic databases
+
+### Data Analysis
+
+* Quality control
+* Data preprocessing
+* Differential expression analysis
+* Gene annotation
+* Functional enrichment
+* Pathway analysis
+* Data visualization
+* Reproducible workflows
+
+### Future Areas
+
+* Single-cell RNA-seq
+* Spatial transcriptomics
+* Machine learning
+* Deep learning for biological data
+
+---
+
+## 🚀 Future Goals
+
+The long-term goal of this mentorship is to develop the ability to independently:
+
+* Obtain and assess biological datasets
+* Design reproducible computational workflows
+* Analyze transcriptomic data
+* Interpret statistical results
+* Communicate biological findings through effective visualization
+* Integrate multiple biological datasets
+* Apply computational methods to research questions
+* Develop research-ready bioinformatics projects
+
+---
+
 ## 👥 Acknowledgements
 I would like to express my sincere gratitude to my mentor, **[Md. Jubayer Hossain](https://github.com/hossainlab)**, for his exceptional guidance, structured curriculum, and constant support throughout this Mentorship Program. This repository is a reflection of the knowledge and skills gained under his supervision.
 * **Affiliations:** Founder @chiralbd | CEO @deepbioltd | Program Lead @gsabioinfointernship
 * **Program Duration:** 12 Weeks (July 2026 - September 2026)
 
+---
 
-💡 *This repository is regularly updated as I move through the program phases.*
+## 👩 Author
 
+[**Naznin Shuktara**](https://github.com/nazninshuktara)
+
+Biotechnology | Bioinformatics | Computational Biology | Biological Data Analysis
+
+💡 *This repository is continuously updated as I progress through the Bioinformatics Mentorship Program.*
+
+> **Learning → Practicing → Analyzing → Documenting → Reproducing → Research**
+
+---
+
+
+## 📄 License
+
+This project is licensed under the [**MIT License**](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program?tab=MIT-1-ov-file).
