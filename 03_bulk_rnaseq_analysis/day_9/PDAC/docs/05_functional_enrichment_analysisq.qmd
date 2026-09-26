@@ -1,0 +1,235 @@
+---
+title: "Functional Enrichment Analysis with clusterProfiler"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    theme: cosmo
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: source
+---
+
+## What
+
+Functional enrichment analysis translates a list of differentially expressed genes into **biological pathway-level insights**. Instead of looking at individual genes, enrichment analysis asks: "Which biological pathways or processes are collectively affected by the expression changes?"
+
+This module uses two complementary methods:
+- **GSEA (Gene Set Enrichment Analysis):** Uses the full ranked gene list to detect coordinated shifts in pathway members
+- **ORA (Over-Representation Analysis):** Uses a cutoff-defined gene list to test whether pathway members are over-represented among DE genes
+
+**Scripts:**
+- `scripts/04_enrichment_gsea.R` — GSEA
+- `scripts/05_enrichment_ora.R` — ORA
+
+---
+
+## Why
+
+### Why move from genes to pathways?
+
+A typical DE analysis identifies thousands of significant genes. Interpreting them one by one is impractical and misses the forest for the trees. Enrichment analysis groups genes by their known biological functions, answering higher-level questions:
+
+- "Is the immune response activated in PDAC tumors?"
+- "Is cell cycle progression upregulated?"
+- "Is normal pancreatic metabolism suppressed?"
+
+These pathway-level insights are more biologically interpretable and more actionable than individual gene lists.
+
+### Why two methods (GSEA and ORA)?
+
+GSEA and ORA answer related but distinct questions, and each has strengths and limitations:
+
+| Property | GSEA | ORA |
+|----------|------|-----|
+| **Input** | Full ranked gene list (no cutoff) | Significant gene list (cutoff-defined) |
+| **Question** | Are pathway members coordinately shifted up or down? | Are pathway members over-represented among DE genes? |
+| **Statistical test** | Permutation-based (Kolmogorov-Smirnov-like) | Hypergeometric test (Fisher's exact) |
+| **Sensitivity** | High — detects coordinated weak shifts | Lower — requires genes to pass cutoff |
+| **Direction** | Yes (NES sign indicates up or down) | Separate runs for up/down |
+| **Key limitation** | May miss pathways driven by few very strong genes | Misses coordinated weak shifts; sensitive to cutoff choice |
+
+**Running both methods** provides cross-validation:
+- Pathways significant in **both** = most robust findings
+- Pathways significant only in **GSEA** = coordinated weak shifts (individual genes don't pass cutoff, but the pathway as a whole shifts)
+- Pathways significant only in **ORA** = driven by a few very strong genes (the pathway's average shift is modest, but several members have large fold changes)
+
+### Why Hallmark + Reactome gene sets?
+
+| Database | Size | Characteristics |
+|----------|------|-----------------|
+| **Hallmark (H)** | 50 gene sets | Curated, non-redundant, well-defined biological states. Each represents a coherent biological process (e.g., "EMT", "Inflammatory Response"). Ideal for a concise overview. |
+| **Reactome (C2:CP:REACTOME)** | 1,839 gene sets | Curated, peer-reviewed pathways. More detailed than Hallmark, covering specific signaling cascades, metabolic pathways, and immune processes. |
+| **GO:BP** | ~7,500 gene sets | Very detailed but highly redundant (parent-child relationships). Can produce overwhelming, overlapping results. |
+| **KEGG** | ~500 gene sets | Popular but requires a commercial license for for-profit use. Excluded from this analysis. |
+
+Hallmark + Reactome provides a balance: concise enough for clear interpretation (Hallmark), detailed enough for mechanistic insight (Reactome), and commercially safe (both are CC-BY 4.0).
+
+---
+
+## Steps
+
+### Script 05: GSEA
+
+#### Step 1: Prepare ranked gene list
+- Rank all genes by a metric that combines significance and direction
+- Metric: `sign(log2FC) * -log10(pvalue)` — most significant upregulated genes at top, most significant downregulated at bottom
+- 22,489 genes ranked (those with Entrez IDs and p-values)
+- **Why this metric:** Using log2FC alone ignores significance (noisy low-count genes get extreme fold changes). Using p-value alone ignores direction. The signed -log10(pvalue) combines both.
+
+#### Step 2: Retrieve MSigDB gene sets
+- Hallmark (50 pathways) + Reactome (1,839 pathways) = 1,889 total gene sets
+- Gene sets use Entrez IDs for matching
+
+#### Step 3: Run GSEA
+- `clusterProfiler::GSEA()` with 1,000 permutations
+- pvalueCutoff = 0.05, pAdjustMethod = "BH"
+- minGSSize = 10, maxGSSize = 500 (filter very small or very large gene sets)
+
+#### Step 4: Export results
+- Full GSEA results table (NES, p-value, FDR, leading edge genes)
+- RDS object for downstream use
+
+#### Step 5: Generate visualizations
+- **Dotplot:** Top 20 pathways by NES, colored by p-value, sized by gene set size
+- **Running score plots:** Top 4 pathways showing the enrichment score accumulation
+
+### Script 06: ORA
+
+#### Step 1: Filter significant genes
+- Upregulated: padj < 0.05, log2FC >= 1 (2,030 genes)
+- Downregulated: padj < 0.05, log2FC <= -1 (1,631 genes)
+- Universe (background): all 22,489 tested genes with Entrez IDs
+
+#### Step 2: Run ORA
+- `clusterProfiler::enricher()` for up and down separately
+- Hypergeometric test with BH correction
+- **Critical:** The universe must be all tested genes, NOT all human genes — otherwise p-values are inflated
+
+#### Step 3: Export results
+- Upregulated and downregulated enrichment tables
+- RDS objects
+
+#### Step 4: Generate barplots
+- Top 15 pathways for up and down, colored by p-value, showing gene count
+
+---
+
+## Key Parameters
+
+| Parameter | Value | Rationale |
+|-----------|-------|-----------|
+| GSEA ranking metric | sign(log2FC) * -log10(pvalue) | Combines significance with direction |
+| GSEA permutations | 1,000 | Minimum recommended; more = more stable p-values |
+| GSEA FDR threshold | 0.05 (BH) | Standard false discovery rate control |
+| ORA significance threshold | padj < 0.05, \|log2FC\| >= 1 | Standard DE gene cutoff |
+| ORA universe | All tested genes (22,489) | Must match the genes that were actually tested |
+| Gene set databases | Hallmark + Reactome | Curated, non-redundant, commercially safe |
+| Gene ID type | Entrez IDs | Native format for MSigDB matching |
+
+---
+
+## Biological Context
+
+In PDAC, enrichment analysis reveals the biological programs that distinguish tumor from normal tissue at the pathway level. Based on the DE results (Module 2), we expect:
+
+**Upregulated pathways (activated in tumor):**
+- Immune response and inflammation (tumor microenvironment)
+- Cell cycle and proliferation (tumor growth)
+- EMT and cell adhesion (invasion and metastasis)
+- Stromal activation and ECM remodeling (desmoplasia)
+
+**Downregulated pathways (suppressed in tumor):**
+- Pancreatic acinar cell function (loss of tissue identity)
+- Digestive enzyme production and secretion
+- Normal pancreatic metabolic processes
+
+These pathway-level results provide a higher-order biological narrative that complements the individual gene view from Module 2.
+
+---
+
+## Code Walkthrough
+
+### Creating the ranked gene list for GSEA
+
+```r
+# Combine significance with direction
+res_df$rank_metric <- sign(res_df$log2FoldChange) * (-log10(res_df$pvalue))
+ranked_genes <- res_df$rank_metric
+names(ranked_genes) <- res_df$entrez_id
+ranked_genes <- sort(ranked_genes, decreasing = TRUE)
+```
+
+### Running GSEA
+
+```r
+gsea_result <- GSEA(
+  geneList      = ranked_genes,
+  TERM2GENE     = term2gene,  # MSigDB Hallmark + Reactome
+  nPerm         = 1000,
+  pvalueCutoff  = 0.05,
+  pAdjustMethod = "BH"
+)
+```
+
+### Running ORA with proper background
+
+```r
+ora_up <- enricher(
+  gene         = up_genes,
+  universe     = universe,  # ALL tested genes, not all human genes
+  TERM2GENE    = term2gene,
+  pvalueCutoff = 0.05,
+  pAdjustMethod = "BH"
+)
+```
+
+---
+
+## Expected Outputs
+
+### Tables
+
+| File | Description |
+|------|-------------|
+| `tables/enrichment_gsea_results.csv` | All GSEA results (NES, p-value, FDR, leading edge) |
+| `tables/enrichment_ora_up_results.csv` | ORA results for upregulated genes |
+| `tables/enrichment_ora_down_results.csv` | ORA results for downregulated genes |
+
+### Figures
+
+| File | Description |
+|------|-------------|
+| `figures/enrichment_gsea_dotplot.png` | Top 20 GSEA pathways by NES |
+| `figures/enrichment_gsea_running_score.png` | Running enrichment score for top 4 pathways |
+| `figures/enrichment_ora_up_barplot.png` | Top 15 upregulated ORA pathways |
+| `figures/enrichment_ora_down_barplot.png` | Top 15 downregulated ORA pathways |
+
+---
+
+## Understanding the GSEA Output
+
+| Column | Meaning |
+|--------|---------|
+| **NES** (Normalized Enrichment Score) | Enrichment score normalized for gene set size. Positive = upregulated in tumor; negative = downregulated. \|NES\| > 1 is a common threshold for meaningful enrichment. |
+| **pvalue** | Permutation-based p-value for the enrichment |
+| **p.adjust** | BH-adjusted p-value (FDR) |
+| **setSize** | Number of genes in the gene set that were in the ranked list |
+| **enrichmentScore** | Raw (unnormalized) enrichment score |
+| **leading_edge** | Genes that drive the enrichment signal (between 0 and the peak of the running score) |
+
+## Understanding the ORA Output
+
+| Column | Meaning |
+|--------|---------|
+| **ID** | Gene set name |
+| **GeneRatio** | (genes in pathway among DE genes) / (total DE genes) |
+| **BgRatio** | (genes in pathway in universe) / (total universe genes) |
+| **pvalue** | Hypergeometric test p-value |
+| **p.adjust** | BH-adjusted p-value |
+| **Count** | Number of DE genes in the pathway |
