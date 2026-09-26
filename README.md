@@ -3,6 +3,7 @@
 A structured learning repository documenting my journey in **Bioinformatics Mentorship Program** under the guidance of **[Md. Jubayer Hossain](https://github.com/hossainlab)**.
 
 This repository contains my **learning notes, R and Python scripts, Bash commands, analysis workflows, exercises, figures, and research-oriented projects** developed throughout this program.
+
 The goal is to build a strong foundation in computational biology while developing practical skills for **reproducible and research-oriented bioinformatics analysis**.
 
 ---
