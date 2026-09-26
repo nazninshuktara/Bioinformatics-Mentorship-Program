@@ -66,14 +66,14 @@ Bioinformatics-Mentorship-Program/
 ### 🧬 Phase 1: Computational Foundation & Programming
 | Week | Session Topic | Tools | Learning Notes |
 | :---: | :--- | :---: | :---: |
-| **Week 1** | Bioinformatics Workflow Setup & CLI Tools for Omics Data Science | Conda / Linux | [Day1](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_1/learning_guide.md), [Day2](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_2/learning_guide.md)|
-| **Week 2** | Introduction to Programming in Bioinformatics: Python & R Fundamentals | Python / R |[Day3](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_3/learning_guide.md), [Day4](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_foundations/day_4/learning_guide.md)
+| **Week 1** | Bioinformatics Workflow Setup & CLI Tools for Omics Data Science | Conda / Linux | [Day1](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_Bioinformatics_foundations/day_1/day1_learning_note.md), [Day2](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/01_Bioinformatics_foundations/day_2/day2_learning_note.md) |
+| **Week 2** | Introduction to Programming in Bioinformatics: Python & R Fundamentals | Python / R | [Day3](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/02_programming_for_bioinformatics/day_3/day3_learning_note.md), [Day4](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/02_programming_for_bioinformatics/day_4/day4_learning_note.md) |
 
 ### 📊 Phase 2: Basic to Advanced Bulk RNA-Seq Analytics
 | Week | Session Topic | Tools | Learning Notes |
 | :---: | :--- | :---: | :---: |
-| **Week 3** | Bulk RNA-Seq Intro & Analysis: From Fastq to Counts Matrix | Bash + R | [Day5](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_5/learning_guide.md), [Day6](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_6/learning_guide.md)|
-| **Week 4** | Count Table to Differential Gene Expression (DGE) & Pathway Analysis | DESeq2 / clusterProfiler | [Day7](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_7/learning_guide.md), [Day8](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_8/learning_guide.md) |
+| **Week 3** | Bulk RNA-Seq Intro & Analysis: From Fastq to Counts Matrix | Bash + R | [Day5](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq_analysis/day_5/day5_learning_note.md), [Day6](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq_analysis/day_6/day6_learning_note.md) |
+| **Week 4** | Count Table to Differential Gene Expression (DGE) & Pathway Analysis | DESeq2 / clusterProfiler | [Day7](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq_analysis/day_7/day7_learning_note.md), [Day8](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq_analysis/day_8/day8_learning_note.md) |
 | **Week 5** | Batch Effects and Meta-Analysis using Public GEO Datasets | ComBat-Seq / MetaVolcano | [Day9](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq_analysis/day_9/day9_learning_note.md), [Day10](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq_analysis/day_10/day10_learning_note.md) |
 
 ### 🧫 Phase 3: Single-Cell & Spatial Transcriptomics
