@@ -74,7 +74,7 @@ Bioinformatics-Mentorship-Program/
 | :---: | :--- | :---: | :---: |
 | **Week 3** | Bulk RNA-Seq Intro & Analysis: From Fastq to Counts Matrix | Bash + R | [Day5](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_5/learning_guide.md), [Day6](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_6/learning_guide.md)|
 | **Week 4** | Count Table to Differential Gene Expression (DGE) & Pathway Analysis | DESeq2 / clusterProfiler | [Day7](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_7/learning_guide.md), [Day8](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq/day_8/learning_guide.md) |
-| **Week 5** | Batch Effects and Meta-Analysis using Public GEO Datasets | ComBat-Seq / MetaVolcano | ⏳ Pending |
+| **Week 5** | Batch Effects and Meta-Analysis using Public GEO Datasets | ComBat-Seq / MetaVolcano | [Day9](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq_analysis/day_9/day9_learning_note.md), [Day10](https://github.com/nazninshuktara/Bioinformatics-Mentorship-Program/blob/main/03_bulk_rnaseq_analysis/day_10/day10_learning_note.md) |
 
 ### 🧫 Phase 3: Single-Cell & Spatial Transcriptomics
 | Week | Session Topic | Tools | Learning Notes |
